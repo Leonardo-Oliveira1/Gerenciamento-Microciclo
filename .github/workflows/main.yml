@@ -14,7 +14,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        server: sftp://hungria.imd.ufrn.br
+        server: hungria.imd.ufrn.br
         username: lbmg.cb
         password: tU@4rHod
         server-dir: /storages/caico/public_html/lbmg.cb/public_html/Microciclo/dashboard/
