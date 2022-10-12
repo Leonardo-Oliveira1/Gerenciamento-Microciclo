@@ -1,7 +1,7 @@
 @extends('smallLayouts.core')
 
 @section('modal')
-    @include('smallLayouts.modals.itemRegister')
+@include('smallLayouts.modals.itemRegister')
 @endsection
 
 @section('content')
@@ -25,10 +25,14 @@
                         <th>Ações</th>
                         <th>Nome</th>
                         <th>Quant.</th>
+                        <th>Próximo a vencer</th>
                         <th>Categoria</th>
                         <th>Recipiente</th>
                         <th>Volume</th>
                         <th>Marca</th>
+                        <th>Utilizado em</th>
+                        <th>Data de registro</th>
+                        <th>Data de alteração</th>
                         <th>Alterado por</th>
                     </tr>
                 </thead>
@@ -47,51 +51,15 @@
                         </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Agar Bacteriológico</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">28/12/2023</span></td>
                         <td>Reagentes</td>
                         <td>Pote</td>
                         <td>500g</td>
                         <td>Biolog</td>
+                        <td>Microcosmos</td>
+                        <td>12/10/2022</td>
+                        <td>14/10/2022</td>
                         <td>Jim Hopper</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Cloreto de Cálcio</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>1kg</td>
-                        <td>Synth</td>
-                        <td>Mike Wheeler</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Cloreto de Potássio</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>1kg</td>
-                        <td>Synth</td>
-                        <td>Steve Harrington</td>
                     </tr>
 
                     <tr>
@@ -107,10 +75,62 @@
                         </td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Agar Bacteriológico</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">28/12/2023</span></td>
                         <td>Reagentes</td>
                         <td>Pote</td>
                         <td>500g</td>
                         <td>Biolog</td>
+                        <td>Microcosmos</td>
+                        <td>12/10/2022</td>
+                        <td>14/10/2022</td>
+                        <td>Jim Hopper</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Agar Bacteriológico</td>
+                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">28/12/2023</span></td>
+                        <td>Reagentes</td>
+                        <td>Pote</td>
+                        <td>500g</td>
+                        <td>Biolog</td>
+                        <td>Microcosmos</td>
+                        <td>12/10/2022</td>
+                        <td>14/10/2022</td>
+                        <td>Jim Hopper</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Agar Bacteriológico</td>
+                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">28/12/2023</span></td>
+                        <td>Reagentes</td>
+                        <td>Pote</td>
+                        <td>500g</td>
+                        <td>Biolog</td>
+                        <td>Microcosmos</td>
+                        <td>12/10/2022</td>
+                        <td>14/10/2022</td>
                         <td>Jim Hopper</td>
                     </tr>
 

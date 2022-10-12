@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col mb-4">
                         <label for="item_name" class="form-label">Nome do item</label>
-                        <input type="text" id="item_name" class="form-control" placeholder="Digite o nome do item">
+                        <input type="text" id="item_name" class="form-control" required placeholder="Digite o nome do item">
                     </div>
 
                     <div class="col mb-4">
@@ -22,8 +22,22 @@
                             <option value="3">Bactérias</option>
                         </select>
                     </div>
-
                 </div>
+
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="html5-date-input" class="col-md-2 col-form-label">vencimento</label>
+                        <div class="col-md-11">
+                            <input class="form-control" type="date" value="2022-06-18" id="html5-date-input" />
+                        </div>
+                    </div>
+
+                    <div class="col mb-4">
+                        <label for="item_name" class="form-label">Utilizado em</label>
+                        <input type="text" id="item_name" class="form-control" placeholder="Experimento em que é utilizado">
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col mb-4">
                         <label for="container_type" class="form-label">Tipo do recipiente</label>

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return view('itens');
+});
 
 Route::get('/itens', function () {
     return view('itens');
