@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col mb-4">
-                        <label for="item_name" class="form-label">Utilizado em</label>
+                        <label for="item_name" class="form-label">Utilizado no experimento:</label>
                         <input type="text" id="item_name" class="form-control" placeholder="Experimento em que é utilizado">
                     </div>
                 </div>
@@ -69,6 +69,7 @@
                             <option value="1">Kg</option>
                             <option value="1">g</option>
                             <option value="1">L</option>
+                            <option value="1">ml</option>
                         </select>
                     </div>
 

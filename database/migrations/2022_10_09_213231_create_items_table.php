@@ -16,13 +16,15 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('quantity');
+            $table->date('expiration_date');
             $table->string('category');
             $table->string('container_type');
-            $table->integer('quantity');
             $table->decimal('volume');
             $table->string('volume_measure');
             $table->string('brand');
-            $table->string('last_activity');
+            $table->string('used_in');
+            $table->string('last_activity_by');
             $table->timestamps();
         });
     }

@@ -53,7 +53,6 @@
             <!-- Layout container -->
             <div class="layout-page">
                 @yield('modal')
-                @include('smallLayouts.navbar')
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
