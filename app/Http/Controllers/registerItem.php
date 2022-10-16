@@ -15,7 +15,6 @@ class registerItem extends Controller
     }
 
     public function showItems(){
-
         $items = Item::orderBy('name', 'ASC')->get();
 
         return $items;
@@ -23,25 +22,40 @@ class registerItem extends Controller
 
     public function getData(Request $request){
 
-        $product_name = $request->input('product_name');
-        $quantity_in_stock = $request->input('quantity_in_stock');
+        dd($request);
+
+        $name = $request->input('item_name');
         $category = $request->input('category');
+        $expiration_date = $request->input('expiration_date');
+        $used_in = $request->input('used_in');
+        $container_type = $request->input('container_type');
+        $volume = $request->input('volume');
+        $unit_type = $request->input('unit_type');
+        $brand_name = $request->input('brand_name');
+        $quantity_in_stock = $request->input('quantity_in_stock');
+        $last_activity_by = "Leonardo Oliveira";
 
         $data = (object) array(
-            'product' => (object) array(
-                 'product_name' => $product_name,
-                 'quantity_in_stock' => $quantity_in_stock,
+            'item' => (object) array(
+                 'name' => $name,
                  'category' => $category,
+                 'expiration_date' => $expiration_date,
+                 'used_in' => $used_in,
+                 'container_type' => $container_type,
+                 'volume' => $volume,
+                 'unit_type' => $unit_type,
+                 'brand_name' => $brand_name,
+                 'quantity_in_stock' => $quantity_in_stock,
+                 'last_activity_by' => $last_activity_by,
                 )
             );
 
+            dd($data);
         return $data;
 
     }
 
     public function store(Request $request){
-
-        $data = $this->getData($request);
 
         /*$product = new Product;
 
@@ -53,6 +67,6 @@ class registerItem extends Controller
 
         $product->save();*/
 
-        return redirect('/itens');
+        /*return redirect('/itens');*/
     }
 }

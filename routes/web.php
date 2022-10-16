@@ -16,6 +16,7 @@ use App\Http\Controllers\registerItem;
 
 
 Route::get('/', [registerItem::class, 'index']);
+Route::post('/items/register_item', [registerItem::class, 'getData']);
 
 Route::get('/itens', function () {
     return view('itens');
