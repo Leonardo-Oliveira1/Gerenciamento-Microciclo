@@ -42,11 +42,12 @@
                         <th>Utilizado em</th>
                         <th>Data de registro</th>
                         <th>Data de alteração</th>
-                        <th>Alterado por</th>
+                        <th>Última atividade</th>
                     </tr>
                 </thead>
 
                 <tbody>
+                    @foreach($items as $item)
                     <tr>
                         <td>
                             <div class="dropdown">
@@ -58,90 +59,19 @@
                                 </div>
                             </div>
                         </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Agar Bacteriológico</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">1</span></td>
-                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">28/12/2023</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>500g</td>
-                        <td>Biolog</td>
-                        <td>Microcosmos</td>
-                        <td>12/10/2022</td>
-                        <td>14/10/2022</td>
-                        <td>Jim Hopper</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
+                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">{{ $item->expiration_date }}</span></td>
+                        <td>{{ $item->category }}</td>
+                        <td>{{ $item->container_type }}</td>
+                        <td>{{ $item->volume }}{{ $item->volume_measure }}</td>
+                        <td>{{ $item->brand }}</td>
+                        <td>{{ $item->used_in }}</td>
+                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                        <td>{{ date('d/m/Y', strtotime($item->updated_at)) }}</td>
+                        <td>{{ $item->last_activity_by }}</td>
                     </tr>
-
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Cloreto de Cálcio</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
-                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">10/09/2023</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>500g</td>
-                        <td>Synth</td>
-                        <td>Microcosmos</td>
-                        <td>13/10/2022</td>
-                        <td>16/10/2022</td>
-                        <td>Jim Hopper</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Extratura de levedura</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">6</span></td>
-                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">20/12/2099</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>500g</td>
-                        <td>Biolog</td>
-                        <td>Microcosmos</td>
-                        <td>12/10/2022</td>
-                        <td>14/10/2022</td>
-                        <td>Jim Hopper</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>Alterar quant. no estoque</a>
-                                    <hr>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)</td>
-                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">2</span></td>
-                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">01/03/2024</span></td>
-                        <td>Reagentes</td>
-                        <td>Pote</td>
-                        <td>1kg</td>
-                        <td>Biolog</td>
-                        <td>Microcosmos</td>
-                        <td>12/10/2022</td>
-                        <td>14/10/2022</td>
-                        <td>Jim Hopper</td>
-                    </tr>
+                    @endforeach
 
                 </tbody>
             </table>
