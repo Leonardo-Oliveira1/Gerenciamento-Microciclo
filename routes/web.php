@@ -16,11 +16,8 @@ use App\Http\Controllers\registerItem;
 
 
 Route::get('/', [registerItem::class, 'index']);
-Route::post('/items/register_item', [registerItem::class, 'getData']);
+Route::post('/items/register_item', [registerItem::class, 'store']);
 
-Route::get('/itens', function () {
-    return view('itens');
-})->name('itens');
 
 Route::get('/categorias', function () {
     return view('itens_categories');

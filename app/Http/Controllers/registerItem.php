@@ -22,8 +22,6 @@ class registerItem extends Controller
 
     public function getData(Request $request){
 
-        dd($request);
-
         $name = $request->input('item_name');
         $category = $request->input('category');
         $expiration_date = $request->input('expiration_date');
@@ -44,29 +42,35 @@ class registerItem extends Controller
                  'container_type' => $container_type,
                  'volume' => $volume,
                  'unit_type' => $unit_type,
-                 'brand_name' => $brand_name,
+                 'brand' => $brand_name,
                  'quantity_in_stock' => $quantity_in_stock,
-                 'last_activity_by' => $last_activity_by,
+                 'last_activity_by' => $last_activity_by
                 )
             );
 
-            dd($data);
         return $data;
 
     }
 
     public function store(Request $request){
 
-        /*$product = new Product;
+        $data = $this->getData($request);
 
-        $product->name = $data->product->product_name;
-        $product->wholesale_unit_price = $data->product->wholesale_value;
-        $product->final_unit_price = $data->product->final_value;
-        $product->quantity_in_stock = $data->product->quantity_in_stock;
-        $product->category = $data->product->category;
+        $item = new Item;
 
-        $product->save();*/
+        $item->name = $data->item->name;
+        $item->quantity = $data->item->quantity_in_stock;
+        $item->expiration_date = $data->item->expiration_date;
+        $item->category = $data->item->category;
+        $item->container_type = $data->item->container_type;
+        $item->volume = $data->item->volume;
+        $item->volume_measure = $data->item->unit_type;
+        $item->brand = $data->item->brand;
+        $item->used_in = $data->item->used_in;
+        $item->last_activity_by = $data->item->last_activity_by;
 
-        /*return redirect('/itens');*/
+        $item->save();
+
+        return redirect('/');
     }
 }
