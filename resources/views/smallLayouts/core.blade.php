@@ -53,7 +53,7 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Hamburguer Menu -->
-                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none" style="margin-left: 50px; position: relative; top: 20px;">
                     <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                         <i class="bx bx-menu bx-sm"></i>
                     </a>
