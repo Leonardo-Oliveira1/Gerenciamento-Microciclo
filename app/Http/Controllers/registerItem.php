@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 
+use App\Http\Controllers\registerCategory;
+
 
 class registerItem extends Controller
 {
     public function index(Request $request){
+
+        $categories = new registerCategory;
+        $containers = new registerContainerType;
+
         return view('itens', [
             'data' => $this->getData($request),
-            'items' => $this->showItems()]);
+            'items' => $this->showItems(),
+            'categories' => $categories->showCategories(),
+            'containers' => $containers->showContainers()]);
     }
 
     public function showItems(){

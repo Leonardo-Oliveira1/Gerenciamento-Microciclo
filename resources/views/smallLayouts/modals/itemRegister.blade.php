@@ -21,10 +21,9 @@
                             <label for="category" class="form-label">Categoria</label>
                             <select class="form-select" name="category" id="category" required>
                                 <option value="" selected>--</option>
-                                <option value="Reagentes">Reagentes</option>
-                                <option value="Vidrarias">Vidrarias</option>
-                                <option value="Plásticos e EPIs">Plásticos e EPIs</option>
-                                <option value="Bactérias">Bactérias</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -48,16 +47,9 @@
                             <label for="container_type" class="form-label">Tipo do recipiente</label>
                             <select class="form-select" name="container_type" id="container_type" required>
                                 <option value="" selected>--</option>
-                                <option value="Pote">Pote</option>
-                                <option value="Tubo">Tubo</option>
-                                <option value="Unidade">Unidade</option>
-                                <option value="Caixa">Caixa</option>
-                                <option value="Falcon">Falcon</option>
-                                <option value="Pacote">Pacote</option>
-                                <option value="3">Pacote com 50 unidades cada</option>
-                                <option value="3">Pacote com 100 unidades cada</option>
-                                <option value="3">Pacote com 500 unidades cada</option>
-                                <option value="3">Pacote com 1000 unidades cada</option>
+                                @foreach($containers as $container)
+                                <option value="{{ $container->name }}">{{ $container->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 

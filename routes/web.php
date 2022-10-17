@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\registerCategory;
+use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 
 /*
@@ -24,9 +25,8 @@ Route::post('/items/register_item', [registerItem::class, 'store']);
 Route::get('/categorias', [registerCategory::class, 'index']);
 Route::post('/items/register_category', [registerCategory::class, 'store']);
 
-Route::get('/recipientes', function () {
-    return view('itens_containers_types');
-})->name('itens_containers_types');
+Route::get('/recipientes', [registerContainerType::class, 'index']);
+Route::post('/items/register_container_type', [registerContainerType::class, 'store']);
 
 Route::get('/estimativas', function () {
     return view('reagents_estimated');
