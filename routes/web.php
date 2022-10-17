@@ -17,16 +17,25 @@ use App\Http\Controllers\registerItem;
 |
 */
 
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
-Route::get('/', [registerItem::class, 'index']);
-Route::post('/items/register_item', [registerItem::class, 'store']);
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 
 
-Route::get('/categorias', [registerCategory::class, 'index']);
-Route::post('/items/register_category', [registerCategory::class, 'store']);
 
-Route::get('/recipientes', [registerContainerType::class, 'index']);
-Route::post('/items/register_container_type', [registerContainerType::class, 'store']);
+Route::get('/', [registerItem::class, 'index'])->name('items');
+Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
+
+
+Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');
+Route::post('/items/register_category', [registerCategory::class, 'store'])->name('register_category');
+
+Route::get('/recipientes', [registerContainerType::class, 'index'])->name('containers');
+Route::post('/items/register_container_type', [registerContainerType::class, 'store'])->name('register_container_type');
 
 Route::get('/estimativas', function () {
     return view('reagents_estimated');

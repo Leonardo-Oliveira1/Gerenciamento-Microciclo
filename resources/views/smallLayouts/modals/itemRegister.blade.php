@@ -55,7 +55,7 @@
 
                         <div class="col mb-4">
                             <label for="volume" class="form-label">Volume (ou peso)</label>
-                            <input type="number" name="volume" id="volume" class="form-control" required placeholder="0.00">
+                            <input type="number" name="volume" id="volume" class="form-control" required placeholder="0">
                         </div>
 
 
