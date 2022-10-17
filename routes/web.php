@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerItem;
 
 /*
@@ -19,9 +21,8 @@ Route::get('/', [registerItem::class, 'index']);
 Route::post('/items/register_item', [registerItem::class, 'store']);
 
 
-Route::get('/categorias', function () {
-    return view('itens_categories');
-})->name('itens_categories');
+Route::get('/categorias', [registerCategory::class, 'index']);
+Route::post('/items/register_category', [registerCategory::class, 'store']);
 
 Route::get('/recipientes', function () {
     return view('itens_containers_types');

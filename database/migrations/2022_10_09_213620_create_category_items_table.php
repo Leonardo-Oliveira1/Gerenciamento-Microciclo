@@ -17,6 +17,7 @@ class CreateCategoryItemsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('add_by');
+            $table->timestamps();
         });
     }
 

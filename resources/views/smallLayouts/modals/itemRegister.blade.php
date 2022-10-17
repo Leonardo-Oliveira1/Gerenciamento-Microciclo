@@ -69,7 +69,7 @@
 
                         <div class="col mb-4">
                             <label for="unit_type" class="form-label">Medida</label>
-                            <select class="form-select"  name="unit_type" id="unit_type" required>
+                            <select class="form-select" name="unit_type" id="unit_type" required>
                                 <option value="" selected>--</option>
                                 <option value="Kg">Kg</option>
                                 <option value="g">g</option>
