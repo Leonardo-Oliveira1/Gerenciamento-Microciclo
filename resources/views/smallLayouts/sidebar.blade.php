@@ -24,14 +24,14 @@
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
                     <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
-                    <span class="fw-semibold" style="margin-left: 6px;">Nome do usuário</span>
+                    <span class="fw-semibold" style="margin-left: 6px;">{{ Auth::user()->name }}</span>
                 </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li>
                     <div class="d-flex dropdown-item">
                         <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">Nome do usuário</span>
+                            <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
                             <small class="text-muted">Colaborador(a)</small>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{ Auth::logout() }}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Encerrar sessão</span>
                     </a>
