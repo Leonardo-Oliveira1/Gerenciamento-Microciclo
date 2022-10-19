@@ -32,7 +32,7 @@
                     <div class="d-flex dropdown-item">
                         <div class="flex-grow-1">
                             <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                            <small class="text-muted">Colaborador(a)</small>
+                            <small class="text-muted">{{ Auth::user()->account_type }}</small>
                         </div>
                     </div>
                 </li>
@@ -81,6 +81,24 @@
                 <div data-i18n="Basic">Dados para a previsão de uso de reagentes</div>
             </a>
         </li>
+
+        @if ( Auth::user()->account_type == "Administrador(a)")
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>
+
+        <li class="menu-item">
+            <a href="lista_de_usuarios" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Basic">Lista de usuários</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="aprovar_usuarios" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-plus"></i>
+                <div data-i18n="Basic">Aprovar usuários</div>
+            </a>
+        </li>
+    @endif
 
 
 </aside>
