@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
+use App\Http\Controllers\registerUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,8 @@ use App\Http\Controllers\registerItem;
 |
 */
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+Route::get('/register', [registerUser::class, 'index'])->name('register');
+Route::post('/register_create_user', [registerUser::class, 'store'])->name('register_create_user');
 
 Route::get('/login', function () {
     return view('auth.login');

@@ -13,9 +13,12 @@
                         <img src="{{ asset('assets/img/microcicloLogoFull.png') }}" alt="Logo" width="200" style="margin-top: 10px;">
                     </div>
                     <!-- /Logo -->
-                    <p class="mb-4">Faça o cadastro para poder utilizar o sistema.</p>
+                    <center><h3>Cadastro</h3></center>
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="register_create_user" method="POST">
+                        @csrf
+
+                        @include('flash-message')
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome e sobrenome</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Insira seu nome" autofocus />
