@@ -40,7 +40,7 @@
                     <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ Auth::logout() }}">
+                    <a class="dropdown-item" href="{{ route('logout') }}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Encerrar sessão</span>
                     </a>

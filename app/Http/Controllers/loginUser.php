@@ -25,4 +25,10 @@ class loginUser extends Controller
             ->with('error','Email ou senha inválidas!');
         }
     }
+
+    public function logout(){
+        Auth::logout();
+
+        return redirect()->route('login');
+    }
 }

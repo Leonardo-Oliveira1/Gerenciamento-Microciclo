@@ -14,6 +14,7 @@ Route::post('/register_create_user', [registerUser::class, 'store'])->name('regi
 
 Route::get('/login', [loginUser::class, 'index'])->name('login');
 Route::post('/auth', [loginUser::class, 'auth'])->name('auth');
+Route::get('/logout', [loginUser::class, 'logout'])->name('logout');
 
 
 //Dashboard Routes
