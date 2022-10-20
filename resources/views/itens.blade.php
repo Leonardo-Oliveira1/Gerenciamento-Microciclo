@@ -19,9 +19,11 @@
     <br>
     <center>
         <h1>Itens do estoque</h1>
+        @if ( Auth::user()->account_type == "Administrador(a)")
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
             + Registrar novo item
         </button>
+        @endif
     </center>
     <br>
     <br>
@@ -31,7 +33,9 @@
             <table id="itens" class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                    @if ( Auth::user()->account_type == "Administrador(a)")
                         <th>Ações</th>
+                    @endif
                         <th>Nome</th>
                         <th>Quant.</th>
                         <th>Próximo a vencer</th>
@@ -48,6 +52,7 @@
 
                 <tbody>
                     @foreach($items as $item)
+                    @if ( Auth::user()->account_type == "Administrador(a)")
                     <tr>
                         <td>
                             <div class="dropdown">
@@ -59,6 +64,7 @@
                                 </div>
                             </div>
                         </td>
+                    @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
                         <td style="font-size: 18px"><span class="badge bg-label-warning me-1">{{ $item->expiration_date }}</span></td>

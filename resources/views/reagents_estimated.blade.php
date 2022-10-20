@@ -10,9 +10,11 @@
     <br>
     <center>
         <h1>Dados para a previsão de uso de reagentes</h1>
+        @if ( Auth::user()->account_type == "Administrador(a)")
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
             + Registrar dados
         </button>
+        @endif
     </center>
     <br>
     <br>

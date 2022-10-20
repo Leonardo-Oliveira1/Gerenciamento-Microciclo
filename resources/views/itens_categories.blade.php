@@ -10,9 +10,11 @@
     <br>
     <center>
         <h1>Categoria de itens</h1>
+        @if ( Auth::user()->account_type == "Administrador(a)")
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
             + Registrar nova categoria
         </button>
+        @endif
     </center>
     <br>
     <br>

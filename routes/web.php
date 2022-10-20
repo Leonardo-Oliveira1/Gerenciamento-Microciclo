@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\loginUser;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\loginUser;
 use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
+use App\Http\Controllers\usersList;
+use App\Http\Controllers\usersUnapprovedList;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -34,12 +36,9 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function()
 
 
     //Admin Routes
-    Route::get('/lista_de_usuarios', function () {
-        return view('admin.users_list');
-    })->name('users_list');
+    Route::get('/lista_de_usuarios', [usersList::class, 'index'])->name('users_list');
+    Route::post('/admin/makeAdmin/{id}', [usersList::class, 'store'])->name('makeAdmin');
 
-    Route::get('/aprovar_usuarios', function () {
-        return view('admin.approve_users');
-    })->name('approve_users');
+    Route::get('/aprovar_usuarios', [usersUnapprovedList::class, 'index'])->name('approve_users');
 
 });

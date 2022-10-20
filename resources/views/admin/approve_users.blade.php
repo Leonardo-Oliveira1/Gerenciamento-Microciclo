@@ -6,6 +6,12 @@
 
 @section('content')
 
+<style>
+    body{
+        background-color: #fafafa;
+    }
+</style>
+
 <div class="container-xxl flex-grow-1 container-p-y">
     <br>
     <center>
@@ -16,7 +22,7 @@
 
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Nome do usuário</th>
@@ -26,10 +32,11 @@
                 </thead>
 
                 <tbody>
+                    @foreach($users as $user)
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>Leonardo Oliveira</td>
-                        <td>oleonardo78@gmail.com</td>
-                        <td>19/10/2022</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
                         <td><button type="button" class="btn btn-primary">
                                 Aprovar
                             </button>
@@ -38,6 +45,7 @@
                             </button>
                         </td>
                     </tr>
+                    @endforeach
 
                 </tbody>
             </table>
