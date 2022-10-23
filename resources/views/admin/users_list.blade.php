@@ -64,13 +64,16 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $collaborator->name }}</td>
                         <td>{{ $collaborator->email }}</td>
                         <td>{{ date('d/m/Y', strtotime($collaborator->created_at)) }}</td>
-                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Tornar Adm.
-                            </button>
+                        <td>
+                            <form method="POST" action="/admin/makeAdmin/{{ $collaborator->id }}" enctype='multipart/form-data'>
+                                @csrf
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary" value="Tornar administrador"></input>
+                                </div>
+                            </form>
                         </td>
                     </tr>
 
-                    @include('smallLayouts.modals.makeAdmin')
 
                     @endforeach
                 </tbody>
