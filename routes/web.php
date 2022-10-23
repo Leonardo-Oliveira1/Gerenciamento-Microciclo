@@ -20,7 +20,7 @@ Route::get('/logout', [loginUser::class, 'logout'])->name('logout');
 
 
 //Dashboard Routes
-Route::middleware(['checksession', 'check.user.account.type'])->group(function(){
+Route::middleware(['checksession', 'check.user.account.type'])->group(function () {
     Route::get('/', [registerItem::class, 'index'])->name('items');
     Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
 
@@ -33,12 +33,13 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function()
     Route::get('/estimativas', function () {
         return view('reagents_estimated');
     })->name('reagents_estimated');
+});
 
 
+Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'])->group(function () {
     //Admin Routes
     Route::get('/lista_de_usuarios', [usersList::class, 'index'])->name('users_list');
     Route::post('/admin/makeAdmin/{id}', [usersList::class, 'store'])->name('makeAdmin');
 
     Route::get('/aprovar_usuarios', [usersUnapprovedList::class, 'index'])->name('approve_users');
-
 });
