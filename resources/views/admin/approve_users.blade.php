@@ -7,7 +7,7 @@
 @section('content')
 
 <style>
-    body{
+    body {
         background-color: #fafafa;
     }
 </style>
@@ -37,15 +37,20 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
-                        <td><button type="button" class="btn btn-primary">
-                                Aprovar
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                Rejeitar
-                            </button>
+                        <td style="display: flex; flex-direction: row; gap: 15px;">
+                            <form method="POST" action="/admin/accept/{{ $user->id }}" enctype='multipart/form-data'>
+                                @csrf
+                                <input type="submit" class="btn btn-primary" value="Aprovar"></input>
+                            </form>
+
+                            <form method="POST" action="/admin/decline/{{ $user->id }}" enctype='multipart/form-data'>
+                                @csrf
+                                <input type="submit" class="btn btn-danger" value="Recusar"></input>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
+
 
                 </tbody>
             </table>
