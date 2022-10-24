@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\registerCategory;
 
@@ -33,13 +34,13 @@ class registerItem extends Controller
         $name = $request->input('item_name');
         $category = $request->input('category');
         $expiration_date = $request->input('expiration_date');
-        $used_in = $request->input('used_in');
+        $used_in = $request->input('used_in', '');
         $container_type = $request->input('container_type');
         $volume = $request->input('volume');
         $unit_type = $request->input('unit_type');
         $brand_name = $request->input('brand_name');
         $quantity_in_stock = $request->input('quantity_in_stock');
-        $last_activity_by = "Leonardo Oliveira";
+        $last_activity_by = Auth::user()->name;
 
         $data = (object) array(
             'item' => (object) array(
@@ -73,8 +74,19 @@ class registerItem extends Controller
         $item->container_type = $data->item->container_type;
         $item->volume = $data->item->volume;
         $item->volume_measure = $data->item->unit_type;
-        $item->brand = $data->item->brand;
-        $item->used_in = $data->item->used_in;
+
+        if($data->item->brand == null){
+            $item->brand = 'Não informado';
+        }else{
+            $item->brand = $data->item->brand;
+        }
+
+        if($data->item->used_in == null){
+            $item->used_in = 'Não informado';
+        }else{
+            $item->used_in = $data->item->used_in;
+        }
+
         $item->last_activity_by = $data->item->last_activity_by;
 
         $item->save();

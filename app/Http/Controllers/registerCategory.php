@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CategoryItem;
+use Illuminate\Support\Facades\Auth;
+
 
 class registerCategory extends Controller
 {
@@ -22,7 +24,7 @@ class registerCategory extends Controller
     public function getData(Request $request){
 
         $category = $request->input('category_name');
-        $add_by = "Leonardo Oliveira";
+        $add_by = Auth::user()->name;
 
         $data = (object) array(
             'category' => (object) array(

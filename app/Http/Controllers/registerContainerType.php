@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ContainerType;
+use Illuminate\Support\Facades\Auth;
 
 class registerContainerType extends Controller
 {
@@ -22,7 +23,7 @@ class registerContainerType extends Controller
     public function getData(Request $request){
 
         $container = $request->input('container_name');
-        $add_by = "Leonardo Oliveira";
+        $add_by = Auth::user()->name;
 
         $data = (object) array(
             'container' => (object) array(

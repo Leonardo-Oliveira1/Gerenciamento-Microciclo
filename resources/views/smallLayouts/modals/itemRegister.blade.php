@@ -38,7 +38,7 @@
 
                         <div class="col mb-4">
                             <label for="used_in" class="form-label">Utilizado no experimento:</label>
-                            <input type="text" id="used_in" name="used_in" class="form-control" required placeholder="Experimento em que é utilizado">
+                            <input type="text" id="used_in" name="used_in" class="form-control" placeholder="Experimento em que é utilizado">
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
 
                         <div class="col mb-4">
                             <label for="volume" class="form-label">Volume (ou peso)</label>
-                            <input type="number" name="volume" id="volume" class="form-control" required placeholder="0">
+                            <input type="number" name="volume" id="volume" class="form-control" required placeholder="0" step="any">
                         </div>
 
 
@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col mb-4">
                             <label for="brand_name" class="form-label">Marca do produto</label>
-                            <input type="text" name="brand_name" id="brand_name" class="form-control" required placeholder="Digite o nome da marca">
+                            <input type="text" name="brand_name" id="brand_name" class="form-control" placeholder="Digite o nome da marca">
                         </div>
 
                         <div class="col mb-4">
