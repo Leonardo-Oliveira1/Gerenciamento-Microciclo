@@ -13,12 +13,12 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="item_name" class="form-label">Nome do item</label>
+                            <label for="item_name" class="form-label">Nome do item <span style="color: red;">*</span></label>
                             <input type="text" id="item_name" name="item_name" class="form-control" required placeholder="Digite o nome do item">
                         </div>
 
                         <div class="col mb-4">
-                            <label for="category" class="form-label">Categoria</label>
+                            <label for="category" class="form-label">Categoria <span style="color: red;">*</span></label>
                             <select class="form-select" name="category" id="category" required>
                                 <option value="" selected>--</option>
                                 @foreach($categories as $category)
@@ -30,21 +30,21 @@
 
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="expiration_date" class="col-md-2 col-form-label">vencimento</label>
+                            <label for="expiration_date" class="col-md-2 col-form-label">vencimento<span style="color: red;">*</span></label>
                             <div class="col-md-11">
                                 <input class="form-control" name="expiration_date" type="date" required id="expiration_date" />
                             </div>
                         </div>
 
                         <div class="col mb-4">
-                            <label for="used_in" class="form-label">Utilizado no experimento:</label>
+                            <label for="used_in" class="form-label">Utilizado no experimento: </label>
                             <input type="text" id="used_in" name="used_in" class="form-control" placeholder="Experimento em que é utilizado">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="container_type" class="form-label">Tipo do recipiente</label>
+                            <label for="container_type" class="form-label">Tipo do recipiente <span style="color: red;">*</span></label>
                             <select class="form-select" name="container_type" id="container_type" required>
                                 <option value="" selected>--</option>
                                 @foreach($containers as $container)
@@ -54,13 +54,13 @@
                         </div>
 
                         <div class="col mb-4">
-                            <label for="volume" class="form-label">Volume (ou peso)</label>
+                            <label for="volume" class="form-label">Volume (ou peso) <span style="color: red;">*</span></label>
                             <input type="number" name="volume" id="volume" class="form-control" required placeholder="0" step="any">
                         </div>
 
 
                         <div class="col mb-4">
-                            <label for="unit_type" class="form-label">Medida</label>
+                            <label for="unit_type" class="form-label">Medida <span style="color: red;">*</span></label>
                             <select class="form-select" name="unit_type" id="unit_type" required>
                                 <option value="" selected>--</option>
                                 <option value="Kg">Kg</option>
@@ -73,12 +73,12 @@
                     </div>
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="brand_name" class="form-label">Marca do produto</label>
+                            <label for="brand_name" class="form-label" >Marca do produto</label>
                             <input type="text" name="brand_name" id="brand_name" class="form-control" placeholder="Digite o nome da marca">
                         </div>
 
                         <div class="col mb-4">
-                            <label for="quantity_in_stock" class="form-label">Quantidade no estoque</label>
+                            <label for="quantity_in_stock" class="form-label">Quantidade no estoque <span style="color: red;">*</span></label>
                             <input type="number" name="quantity_in_stock" id="quantity_in_stock" class="form-control" required placeholder="0">
                         </div>
                     </div>
