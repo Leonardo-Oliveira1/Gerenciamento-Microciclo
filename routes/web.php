@@ -8,7 +8,6 @@ use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
 use App\Http\Controllers\adminUsersActions;
-use App\Http\Controllers\usersUnapprovedList;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -41,7 +40,7 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     Route::get('/lista_de_usuarios', [adminUsersActions::class, 'index'])->name('users_list');
     Route::post('/admin/makeAdmin/{id}', [adminUsersActions::class, 'makeAdmin'])->name('makeAdmin');
 
-    Route::get('/aprovar_usuarios', [usersUnapprovedList::class, 'index'])->name('approve_users');
+    Route::get('/aprovar_usuarios', [adminUsersActions::class, 'showUnapprovedUsers'])->name('approve_users');
     Route::post('/admin/accept/{id}', [adminUsersActions::class, 'makeCollaborator'])->name('acceptUser');
     Route::post('/admin/decline/{id}', [adminUsersActions::class, 'declineCollaborator'])->name('declineUser');
 });

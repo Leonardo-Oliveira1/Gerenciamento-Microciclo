@@ -2,23 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\adminsControl;
 use App\User;
-
 
 class adminUsersActions extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $users = new adminsControl;
-
         return view('admin.users_list', [
-            'collaborators' => $users->showCollaborators(),
-            'admins' => $users->showAdmins(),
+            'collaborators' => $this->showCollaborators(),
+            'admins' => $this->showAdmins(),
         ]);
     }
 
+    //GET USER BY ACCOUNT TYPE FROM DATABASE
+    public function showCollaborators(){
+        $users = User::where('account_type', "Colaborador(a)")->get();
+
+        return $users;
+    }
+
+    public function showAdmins(){
+        $users = User::where('account_type', "Administrador(a)")->get();
+
+        return $users;
+    }
+
+    public function showUnapprovedUsers(){
+        $users = User::where('account_type', "Not Accepted")->get();
+
+        return view('admin.approve_users', [
+            'users' => $users
+        ]);
+    }
+
+    //ACTIONS
     public function makeAdmin($id)
     {
         User::where('id', $id)
