@@ -67,7 +67,7 @@
                     @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
-                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">{{ $item->expiration_date }}</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
                         <td>{{ $item->category }}</td>
                         <td>{{ $item->container_type }}</td>
                         <td>{{ $item->volume }}{{ $item->volume_measure }}</td>
