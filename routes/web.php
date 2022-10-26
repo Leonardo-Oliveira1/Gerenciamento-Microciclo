@@ -8,6 +8,7 @@ use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
 use App\Http\Controllers\adminUsersActions;
+use App\Http\Controllers\registerStock;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -20,7 +21,10 @@ Route::get('/logout', [loginUser::class, 'logout'])->name('logout');
 
 //Dashboard Routes
 Route::middleware(['checksession', 'check.user.account.type'])->group(function () {
-    Route::get('/', [registerItem::class, 'index'])->name('items');
+    Route::get('/', [registerStock::class, 'index'])->name('stock');
+    Route::get('/estoque', [registerStock::class, 'index'])->name('reagents_estimated');
+
+    Route::get('/itens', [registerItem::class, 'index'])->name('stock');
     Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
 
     Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');

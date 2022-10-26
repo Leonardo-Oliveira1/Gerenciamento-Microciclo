@@ -18,7 +18,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <br>
     <center>
-        <h1>Itens do estoque</h1>
+        <h1>Estoque</h1>
         @if ( Auth::user()->account_type == "Administrador(a)")
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
             + Registrar novo item
@@ -37,12 +37,11 @@
                         <th>Ações</th>
                     @endif
                         <th>Nome</th>
+                        <th>Quant.</th>
+                        <th>Próximo a vencer</th>
                         <th>Categoria</th>
-                        <th>Recipiente</th>
-                        <th>Volume</th>
-                        <th>Marca</th>
-                        <th>Utilizado em</th>
-                        <th>Data de registro</th>
+                        <th>Data de alteração</th>
+                        <th>Última atividade</th>
                     </tr>
                 </thead>
 
@@ -62,12 +61,11 @@
                         </td>
                     @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
+                        <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
+                        <td style="font-size: 18px"><span class="badge bg-label-warning me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
                         <td>{{ $item->category }}</td>
-                        <td>{{ $item->container_type }}</td>
-                        <td>{{ $item->volume }}{{ $item->volume_measure }}</td>
-                        <td>{{ $item->brand }}</td>
-                        <td>{{ $item->used_in }}</td>
-                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                        <td>{{ date('d/m/Y', strtotime($item->updated_at)) }}</td>
+                        <td>{{ $item->last_activity_by }}</td>
                     </tr>
                     @endforeach
 
