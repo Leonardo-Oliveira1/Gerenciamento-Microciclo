@@ -46,7 +46,8 @@ class registerContainerType extends Controller
         $container->add_by = $data->container->add_by;
 
         if (!ContainerType::where('name', $data->container->name)->get()->isEmpty()) {
-            return redirect('/recipientes');
+            return redirect()->route('containers')
+            ->with('error','Recipiente já cadastrado!');
         }else{
             $container->save();
         }

@@ -8,51 +8,43 @@ use App\Item;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\registerCategory;
+use App\Http\Controllers\registerItem;
+use App\ItemStock;
 
 class registerStock extends Controller
 {
     public function index(Request $request){
 
+        $item = new registerItem;
         $categories = new registerCategory;
         $containers = new registerContainerType;
 
         return view('stock', [
             'data' => $this->getData($request),
-            'items' => $this->showItems(),
+            'items' => $item->showItems(),
+            'stocks' => $this->showStock(),
             'categories' => $categories->showCategories(),
             'containers' => $containers->showContainers()]);
     }
 
-    public function showItems(){
-        $items = Item::orderBy('name', 'ASC')->get();
+    public function showStock(){
+        $stock = ItemStock::orderBy('name', 'ASC')->get();
 
-        return $items;
+        return $stock;
     }
 
     public function getData(Request $request){
 
         $name = $request->input('item_name');
-        $category = $request->input('category');
         $expiration_date = $request->input('expiration_date');
-        $used_in = $request->input('used_in', '');
-        $container_type = $request->input('container_type');
-        $volume = $request->input('volume');
-        $unit_type = $request->input('unit_type');
-        $brand_name = $request->input('brand_name');
-        $quantity_in_stock = $request->input('quantity_in_stock');
+        $quantity = $request->input('quantity');
         $last_activity_by = Auth::user()->name;
 
         $data = (object) array(
             'item' => (object) array(
                  'name' => $name,
-                 'category' => $category,
                  'expiration_date' => $expiration_date,
-                 'used_in' => $used_in,
-                 'container_type' => $container_type,
-                 'volume' => $volume,
-                 'unit_type' => $unit_type,
-                 'brand' => $brand_name,
-                 'quantity_in_stock' => $quantity_in_stock,
+                 'quantity' => $quantity,
                  'last_activity_by' => $last_activity_by
                 )
             );
@@ -65,31 +57,19 @@ class registerStock extends Controller
 
         $data = $this->getData($request);
 
-        $item = new Item;
+        $stock = new ItemStock;
 
-        $item->name = $data->item->name;
-        $item->quantity = $data->item->quantity_in_stock;
-        $item->expiration_date = $data->item->expiration_date;
-        $item->category = $data->item->category;
-        $item->container_type = $data->item->container_type;
-        $item->volume = $data->item->volume;
-        $item->volume_measure = $data->item->unit_type;
+        $stock->name = $data->item->name;
+        $stock->quantity = $data->item->quantity;
+        $stock->expiration_date = $data->item->expiration_date;
+        $stock->last_activity_by = $data->item->last_activity_by;
 
-        if($data->item->brand == null){
-            $item->brand = 'Não informado';
+        if (!ItemStock::where('name', $data->item->name)->get()->isEmpty()) {
+            return redirect()->route('stock')
+            ->with('error','Item já cadastrado!');
         }else{
-            $item->brand = $data->item->brand;
+            $stock->save();
         }
-
-        if($data->item->used_in == null){
-            $item->used_in = 'Não informado';
-        }else{
-            $item->used_in = $data->item->used_in;
-        }
-
-        $item->last_activity_by = $data->item->last_activity_by;
-
-        $item->save();
 
         return redirect('/');
     }

@@ -19,7 +19,7 @@ class loginUser extends Controller
         ]);
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect()->route('items');
+            return redirect()->route('home');
         }else{
             return redirect()->route('login')
             ->with('error','Email ou senha inválidas!');

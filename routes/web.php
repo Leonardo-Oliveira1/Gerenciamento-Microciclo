@@ -21,10 +21,11 @@ Route::get('/logout', [loginUser::class, 'logout'])->name('logout');
 
 //Dashboard Routes
 Route::middleware(['checksession', 'check.user.account.type'])->group(function () {
-    Route::get('/', [registerStock::class, 'index'])->name('stock');
-    Route::get('/estoque', [registerStock::class, 'index'])->name('reagents_estimated');
+    Route::get('/', [registerStock::class, 'index'])->name('home');
+    Route::get('/estoque', [registerStock::class, 'index'])->name('stock');
+    Route::post('/estoque/register_stock', [registerStock::class, 'store'])->name('register_stock');
 
-    Route::get('/itens', [registerItem::class, 'index'])->name('stock');
+    Route::get('/itens', [registerItem::class, 'index'])->name('items');
     Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
 
     Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');

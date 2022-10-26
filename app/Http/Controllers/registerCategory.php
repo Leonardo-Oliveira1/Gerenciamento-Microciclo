@@ -47,7 +47,8 @@ class registerCategory extends Controller
         $category->add_by = $data->category->add_by;
 
         if (!CategoryItem::where('name', $data->category->name)->get()->isEmpty()) {
-            return redirect('/categorias');
+            return redirect()->route('categories')
+            ->with('error','Categoria já cadastrada!');
         }else{
             $category->save();
         }

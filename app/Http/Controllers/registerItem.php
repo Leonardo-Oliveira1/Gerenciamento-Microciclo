@@ -33,26 +33,22 @@ class registerItem extends Controller
 
         $name = $request->input('item_name');
         $category = $request->input('category');
-        $expiration_date = $request->input('expiration_date');
         $used_in = $request->input('used_in', '');
         $container_type = $request->input('container_type');
         $volume = $request->input('volume');
         $unit_type = $request->input('unit_type');
         $brand_name = $request->input('brand_name');
-        $quantity_in_stock = $request->input('quantity_in_stock');
         $last_activity_by = Auth::user()->name;
 
         $data = (object) array(
             'item' => (object) array(
                  'name' => $name,
                  'category' => $category,
-                 'expiration_date' => $expiration_date,
                  'used_in' => $used_in,
                  'container_type' => $container_type,
                  'volume' => $volume,
                  'unit_type' => $unit_type,
                  'brand' => $brand_name,
-                 'quantity_in_stock' => $quantity_in_stock,
                  'last_activity_by' => $last_activity_by
                 )
             );
@@ -68,8 +64,6 @@ class registerItem extends Controller
         $item = new Item;
 
         $item->name = $data->item->name;
-        $item->quantity = $data->item->quantity_in_stock;
-        $item->expiration_date = $data->item->expiration_date;
         $item->category = $data->item->category;
         $item->container_type = $data->item->container_type;
         $item->volume = $data->item->volume;
@@ -89,8 +83,13 @@ class registerItem extends Controller
 
         $item->last_activity_by = $data->item->last_activity_by;
 
-        $item->save();
+        if (!Item::where('name', $data->item->name)->get()->isEmpty()) {
+            return redirect()->route('items')
+            ->with('error','Item já cadastrado!');
+        }else{
+            $item->save();
+        }
 
-        return redirect('/');
+        return redirect('/itens');
     }
 }

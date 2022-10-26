@@ -21,6 +21,7 @@
 
     <div class="row">
         <div class="table-responsive">
+            @include('flash-message')
             <table class="table table-striped">
                 <thead>
                     <tr>

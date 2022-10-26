@@ -16,7 +16,14 @@
                             <label for="item_name" class="form-label">Nome do item <span style="color: red;">*</span></label>
                             <input type="text" id="item_name" name="item_name" class="form-control" required placeholder="Digite o nome do item">
                         </div>
+                        <div class="col mb-4">
+                            <label for="used_in" class="form-label">Utilizado no experimento: </label>
+                            <input type="text" id="used_in" name="used_in" class="form-control" placeholder="Experimento em que é utilizado">
+                        </div>
 
+                    </div>
+
+                    <div class="row">
                         <div class="col mb-4">
                             <label for="category" class="form-label">Categoria <span style="color: red;">*</span></label>
                             <select class="form-select" name="category" id="category" required>
@@ -26,23 +33,6 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col mb-4">
-                            <label for="expiration_date" class="col-md-2 col-form-label">vencimento<span style="color: red;">*</span></label>
-                            <div class="col-md-11">
-                                <input class="form-control" name="expiration_date" type="date" required id="expiration_date" />
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <label for="used_in" class="form-label">Utilizado no experimento: </label>
-                            <input type="text" id="used_in" name="used_in" class="form-control" placeholder="Experimento em que é utilizado">
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col mb-4">
                             <label for="container_type" class="form-label">Tipo do recipiente <span style="color: red;">*</span></label>
                             <select class="form-select" name="container_type" id="container_type" required>
@@ -52,6 +42,9 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+
+                    <div class="row">
 
                         <div class="col mb-4">
                             <label for="volume" class="form-label">Volume (ou peso) <span style="color: red;">*</span></label>
@@ -75,11 +68,6 @@
                         <div class="col mb-4">
                             <label for="brand_name" class="form-label" >Marca do produto</label>
                             <input type="text" name="brand_name" id="brand_name" class="form-control" placeholder="Digite o nome da marca">
-                        </div>
-
-                        <div class="col mb-4">
-                            <label for="quantity_in_stock" class="form-label">Quantidade no estoque <span style="color: red;">*</span></label>
-                            <input type="number" name="quantity_in_stock" id="quantity_in_stock" class="form-control" required placeholder="0">
                         </div>
                     </div>
                 </div>
