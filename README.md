@@ -6,7 +6,6 @@
 
 <p align="center">Aplicação web projetada para <b>organizar o processo operacional</b> do laboratório da Microciclo quanto aos <b>controles do estoque</b> e das produções bacterianas, visando maior agilidade de resposta, confiabilidade e integração das atividades desempenhadas.</p>
 
-<br>
 <h4 align="center"> 
 	🚧  Em desenvolvimento...  🚧
 </h4>
@@ -94,7 +93,7 @@ Antes de tudo, vale lembrar que o projeto **se comporta de uma maneira completam
 
 Para começar, você precisa upar os seus arquivos da forma que estão no desenvolvimento local para o servidor já que não é possível usar o terminal para executar comandos através do FTP. Porém, **todos os arquivos de dependências já estão alocados no servidor** e não é necessário o reupload deles, com exceção dos casos em que novas dependências são instaladas.
 
-O **arquivo index** do projeto se encontra na pasta *public/index.php*. Ou no link: lbmg.cb.ufrn.br/Microciclo/dashboard/public/index.php'.
+O **arquivo index** do projeto se encontra na pasta *public/index.php*. Ou no link: https://lbmg.cb.ufrn.br/Microciclo/dashboard/public/index.php
 
 Como ainda não há nenhuma forma automatizada de fazer o commit dos arquivos para o servidor, em grande maioria das vezes você precisará **mudar os links manualmente das páginas**, tendo em vista que eles tomam a "pasta root" como https://lbmg.cb.ufrn.br/.
 
