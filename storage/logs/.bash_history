@@ -1,0 +1,2 @@
+ls
+ls -lha 

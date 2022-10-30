@@ -1,78 +1,101 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="README/logo.png"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<h1 align="center">Microciclo Dashboard</h1>
 
-## About Laravel
+Aplicação web projetada para **organizar o processo operacional** do laboratório quanto aos **controles do estoque** e das produções bacterianas, visando maior agilidade de resposta, confiabilidade e integração das atividades desempenhadas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br>
+<h4 align="center"> 
+	🚧  Microciclo Dashboard 🚀 Em desenvolvimento...  🚧
+</h4>
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<hr>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Índice
+- [Índice](#índice)
+- [Features](#features)
+  - [Cadastro e login com hierarquia](#cadastro-e-login-com-hierarquia)
+- [Instalações](#instalações)
+  - [👨‍💻 Rodando a aplicação no ambiente de desenvolvimento](#-rodando-a-aplicação-no-ambiente-de-desenvolvimento)
+  - [📊 Rodando a aplicação no servidor da UFRN](#-rodando-a-aplicação-no-servidor-da-ufrn)
 
-## Learning Laravel
+<hr>
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- [x] Cadastro  e login de usuário
+- [x] Sistema de hierarquia com níveis de acesso entre os usuários
+- [x] Cadastro de categorias e recipientes
+- [x] Cadastro de itens
+- [ ] Controle de estoque
+- [ ] Processos operacionais
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<br>
 
-## Laravel Sponsors
+### Cadastro e login com hierarquia
+A hierarquia utilizada no projeto é a de **Colaboradores** e **Administradores**. As permissões de cada um desses é dividida da seguinte forma:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Colaboradores**: possuem somente a permissão de leitura das informações do estoque.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+**Administradores**: possuem a permissão de leitura, criação e alteração do estoque, além de terem a permissão de aprovar e rejeitar usuários e também promover colaboradores para administradores. 
 
-## Contributing
+<br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+O **sistema de cadastro** é o trivial utilizado nos sites: contém apenas o nome, sobrenome, email e senha.
 
-## Code of Conduct
+Quando um novo usuário cria sua conta, o perfil dele é mantido como **'não aprovado'** até que um **Administrador** do sistema, em função privilegiada, **aprove sua conta**.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<hr>
 
-## Security Vulnerabilities
+## Instalações
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Antes de começar, você vai precisar ter instalado em sua máquina a **versão 7.2 do PHP** para rodar este projeto.
 
-## License
+### 👨‍💻 Rodando a aplicação no ambiente de desenvolvimento
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aqui não há nada fora do comum. Basicamente, você deve clonar o repositório e fazer os procedimentos padrões do Laravel para rodar a aplicação. **Não esquecendo de rodar as migrations**! 
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/Leonardo-Oliveira1/Gerenciamento-Microciclo.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd gerenciamento-microciclo
+
+# Instale as dependências do Composer (essa instalação pode levar vários minutos)
+$ composer install
+
+# Instale as dependências do Node (essa instalação pode levar vários minutos)
+$ npm install
+
+$ Crie um banco de dados MySQL chamado de 'microciclo' e use a collation equivalente a 'utf8_general_ci'
+
+$ Configure o seu arquivo .env.
+
+# Crie uma chave para sua aplicação
+$ php artisan key:generate
+
+# Prontinho, pode rodar o projeto no seu computador
+$ php artisan serve
+
+```
+
+Obs. ⚠️: o banco de dados vem vazio e você precisará criar registros nele. Também é necessário **alterar manualmente** o seu tipo de conta para **'Administrador(a)'** para ter acesso a todas as funções do sistema usando seu usuário.
+
+<br>
+
+### 📊 Rodando a aplicação no servidor da UFRN
+
+Antes de tudo, vale lembrar que o projeto **se comporta de uma maneira completamente diferente** na hospedagem da UFRN para o desenvolvimento local. 
+
+Para começar, você precisa upar os seus arquivos da forma que estão no desenvolvimento local para o servidor já que não é possível usar o terminal para executar comandos através do FTP. Porém, **todos os arquivos de dependências já estão alocados no servidor** e não é necessário o reupload deles, com exceção dos casos em que novas dependências são instaladas.
+
+O **arquivo index** do projeto se encontra na pasta *public/index.php*. Ou no link: lbmg.cb.ufrn.br/Microciclo/dashboard/public/index.php'.
+
+Como ainda não há nenhuma forma automatizada de fazer o commit dos arquivos para o servidor, em grande maioria das vezes você precisará **mudar os links manualmente das páginas**, tendo em vista que eles tomam a "pasta root" como https://lbmg.cb.ufrn.br/.
+
+Sobre a conexão com o servidor, o arquivo .env, **por algum motivo, muda o host digitado na hora da compilaçao**. Por isso, é necessário que as informações de host, senha etc seja alterada diretamente na **seção de mysql do arquivo *config/database.php***: substitua toda a função do env por uma simples string para o username, host, port e password.
+
+Feito todas essas etapas, a conexão com o servidor da UFRN e a conexão entre as páginas está feita no projeto.
+
+<hr>
