@@ -2,7 +2,7 @@
 @section('action', 'Login')
 @section('content')
 
-<div class="container-xxl">
+<div class="container-xxl" id="main_container">
     <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
             <!-- Register -->
@@ -15,7 +15,10 @@
                     <!-- /Logo -->
                     <p class="mb-4">Faça o login em sua conta para poder utilizar o sistema.</p>
 
-                    <form id="formAuthentication" class="mb-3" action="/auth" method="POST">
+                    <form onsubmit="loading()" id="formAuthentication" class="mb-3" action="/auth" method="POST">
+                        <div id="loading" style="display: none; z-index: 10; position: absolute; left: 135px;">
+                            <img src="{{ asset('assets/img/loading.gif') }}" width="130" style="opacity: 1.0; filter: contrast(900%);" alt="">
+                        </div>
                         @csrf
 
                         @include('flash-message')
@@ -49,4 +52,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    function loading() {
+        const loadingImg = document.getElementById("loading").style.display = "block";
+        const OpacityMainContainer = document.getElementById("main_container").style.opacity = "0.2";
+    }
+</script>
+
 @endsection
