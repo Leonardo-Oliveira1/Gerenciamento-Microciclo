@@ -47,6 +47,7 @@ class registerUser extends Controller
         }else{
             $user->save();
         }
-        return redirect('/login');
+        return redirect()->route('login')
+        ->with('info','Você foi redirecionado para a página de login. Utilize o seu email e senha para acessar o sistema.');
     }
 }
