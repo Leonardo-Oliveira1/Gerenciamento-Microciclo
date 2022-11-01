@@ -9,6 +9,7 @@ use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
 use App\Http\Controllers\adminUsersActions;
 use App\Http\Controllers\registerStock;
+use App\Http\Controllers\tablesOperations;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -40,12 +41,17 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
 });
 
 
+//Admin Routes
 Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'])->group(function () {
-    //Admin Routes
     Route::get('/lista_de_usuarios', [adminUsersActions::class, 'index'])->name('users_list');
     Route::post('/admin/makeAdmin/{id}', [adminUsersActions::class, 'makeAdmin'])->name('makeAdmin');
 
     Route::get('/aprovar_usuarios', [adminUsersActions::class, 'showUnapprovedUsers'])->name('approve_users');
     Route::post('/admin/accept/{id}', [adminUsersActions::class, 'makeCollaborator'])->name('acceptUser');
     Route::post('/admin/decline/{id}', [adminUsersActions::class, 'declineCollaborator'])->name('declineUser');
+
+    //Tables Operations
+    Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
+
+
 });
