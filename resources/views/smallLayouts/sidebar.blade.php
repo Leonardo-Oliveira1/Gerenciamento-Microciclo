@@ -61,28 +61,28 @@
         </li>
 
         <li class="menu-item">
-            <a href="itens" class="menu-link">
+            <a href="/itens" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Basic">Registrar itens</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="categorias" class="menu-link">
+            <a href="/categorias" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Basic">Categorias de itens</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="recipientes" class="menu-link">
+            <a href="/recipientes" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bong"></i>
                 <div data-i18n="Basic">Tipos de recipientes</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="estimativas" class="menu-link">
+            <a href="/estimativas" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-data"></i>
                 <div data-i18n="Basic">Dados para a previsão de uso de reagentes</div>
             </a>
@@ -92,14 +92,14 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>
 
         <li class="menu-item">
-            <a href="lista_de_usuarios" class="menu-link">
+            <a href="/lista_de_usuarios" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Basic">Lista de usuários</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="aprovar_usuarios" class="menu-link">
+            <a href="/aprovar_usuarios" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-plus"></i>
                 <div data-i18n="Basic">Aprovar usuários</div>
             </a>

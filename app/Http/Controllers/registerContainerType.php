@@ -15,7 +15,13 @@ class registerContainerType extends Controller
     }
 
     public function showContainers(){
-        $container = ContainerType::orderBy('name', 'ASC')->get();
+        $containers = ContainerType::orderBy('name', 'ASC')->get();
+
+        return $containers;
+    }
+
+    public function showContainer($id){
+        $container = ContainerType::where('id', "=", $id)->first();
 
         return $container;
     }

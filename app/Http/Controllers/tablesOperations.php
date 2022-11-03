@@ -14,4 +14,11 @@ class tablesOperations extends Controller
 
         return redirect()->route('containers');
     }
+
+    public function editContainerType($id)
+    {
+        ContainerType::where('id', $id)->delete();
+
+        return redirect()->route('containers');
+    }
 }

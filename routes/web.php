@@ -8,6 +8,7 @@ use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
 use App\Http\Controllers\adminUsersActions;
+use App\Http\Controllers\editContainersTypes;
 use App\Http\Controllers\registerStock;
 use App\Http\Controllers\tablesOperations;
 
@@ -53,5 +54,7 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     //Tables Operations
     Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
 
+    Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
+    Route::post('/admin/edit/container_type/save', [editContainersTypes::class, 'edit'])->name('editContainerType');
 
 });

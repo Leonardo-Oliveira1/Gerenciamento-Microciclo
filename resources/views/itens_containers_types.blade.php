@@ -41,11 +41,14 @@
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                 <div class="dropdown-menu">
-                                <a class='dropdown-item' style="cursor: pointer;" onclick="popup('{{ $container->name }}', 'apagar', 'o recipiente', 'deleteForm')">Deletar</a>
+                                    <a class="dropdown-item" href="/admin/edit/container_type/{{ $container->id}}"><i class="bx bx-edit-alt me-1"></i>Alterar nome</a>
+                                    <hr>
+                                    <a class='dropdown-item' style="cursor: pointer;" onclick="popup('{{ $container->name }}', 'apagar', 'o recipiente', 'deleteForm')">Deletar</a>
                                     <form method="POST" id="deleteForm" action="/admin/delete/container_type/{{ $container->id }}" enctype='multipart/form-data'>
                                         @csrf
                                         <input type="submit" class="dropdown-item" style="display: none;"></input>
                                     </form>
+
                                 </div>
                             </div>
                         </td>
