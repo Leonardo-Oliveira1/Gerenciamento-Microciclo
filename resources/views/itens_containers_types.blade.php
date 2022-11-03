@@ -6,6 +6,8 @@
 
 @section('content')
 
+@include('utils.confirmPopUp')
+
 <div class="container-xxl flex-grow-1 container-p-y">
     <br>
     <center>
@@ -39,9 +41,10 @@
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                 <div class="dropdown-menu">
-                                    <form method="POST" action="/admin/delete/container_type/{{ $container->id }}" enctype='multipart/form-data'>
+                                <a class='dropdown-item' style="cursor: pointer;" onclick="popup('{{ $container->name }}', 'apagar', 'o recipiente', 'deleteForm')">Deletar</a>
+                                    <form method="POST" id="deleteForm" action="/admin/delete/container_type/{{ $container->id }}" enctype='multipart/form-data'>
                                         @csrf
-                                        <input type="submit" class="dropdown-item" value="Deletar"></input>
+                                        <input type="submit" class="dropdown-item" style="display: none;"></input>
                                     </form>
                                 </div>
                             </div>
