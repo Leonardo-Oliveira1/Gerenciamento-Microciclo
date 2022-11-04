@@ -8,6 +8,7 @@ use App\Http\Controllers\registerContainerType;
 use App\Http\Controllers\registerItem;
 use App\Http\Controllers\registerUser;
 use App\Http\Controllers\adminUsersActions;
+use App\Http\Controllers\editCategory;
 use App\Http\Controllers\editContainersTypes;
 use App\Http\Controllers\registerStock;
 use App\Http\Controllers\tablesOperations;
@@ -53,8 +54,12 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
 
     //Tables Operations
     Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
+    Route::post('/admin/delete/category/{id}', [tablesOperations::class, 'deleteCategory'])->name('deleteCategory');
 
     Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
-    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('editContainerType');
+    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('editContainerTypeSave');
+
+    Route::get('/admin/edit/category/{id}', [editCategory::class, 'index'])->name('editCategory');
+    Route::post('/admin/edit/category/save/{id}', [editCategory::class, 'edit'])->name('editCategorySave');
 
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryItem;
 use Illuminate\Http\Request;
 
 use App\ContainerType;
@@ -15,10 +16,10 @@ class tablesOperations extends Controller
         return redirect()->route('containers');
     }
 
-    public function editContainerType($id)
+    public function deleteCategory($id)
     {
-        ContainerType::where('id', $id)->delete();
+        CategoryItem::where('id', $id)->delete();
 
-        return redirect()->route('containers');
+        return redirect()->route('categories');
     }
 }

@@ -21,6 +21,12 @@ class registerCategory extends Controller
         return $category;
     }
 
+    public function showCategory($id){
+        $category = CategoryItem::where('id', "=", $id)->first();
+
+        return $category;
+    }
+
     public function getData(Request $request){
 
         $category = $request->input('category_name');

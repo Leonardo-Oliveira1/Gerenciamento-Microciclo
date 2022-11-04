@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ContainerType;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\registerContainerType;
 
@@ -26,6 +27,7 @@ class editContainersTypes extends Controller
         $data = (object) array(
             'container' => (object) array(
                     'name' => $name,
+                    'last_activity' => Auth::user()->name
                 )
             );
 
@@ -39,6 +41,7 @@ class editContainersTypes extends Controller
         $container = ContainerType::find($id);
 
         $container->name = $data->container->name;
+        $container->add_by = $data->container->last_activity;
 
         $container->save();
 
