@@ -43,6 +43,6 @@ class editContainersTypes extends Controller
         $container->save();
 
         return redirect()->route('containers')
-        ->with('sucess','Recipiente alterado com sucesso!');
+        ->with('success','Recipiente alterado com sucesso!');
     }
 }
