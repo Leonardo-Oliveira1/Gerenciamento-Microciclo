@@ -15,27 +15,24 @@ class editContainersTypes extends Controller
         $container = new registerContainerType;
 
         return view('editLayouts.item_containers_types', [
-            'data' => $this->getData($request),
+            'data' => $this->getData($request, $id),
             'container' => $container->showContainer($id),
         ]);
     }
 
     public function getData(Request $request){
 
-        dd($request);
-        $name = $request->input('item_name');
-        $id = $request;
+        $name = $request->input('name');
         $data = (object) array(
             'container' => (object) array(
-                 'name' => $name,
+                    'name' => $name,
                 )
             );
 
         return $data;
-
     }
 
-    public function edit(Request $request){
+    public function edit(Request $request, $id){
 
         $data = $this->getData($request);
 
@@ -45,7 +42,7 @@ class editContainersTypes extends Controller
 
         $container->save();
 
-        return redirect()->route('items')
+        return redirect()->route('containers')
         ->with('sucess','Recipiente alterado com sucesso!');
     }
 }

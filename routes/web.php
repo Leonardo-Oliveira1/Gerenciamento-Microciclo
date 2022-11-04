@@ -55,6 +55,6 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
 
     Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
-    Route::post('/admin/edit/container_type/save', [editContainersTypes::class, 'edit'])->name('editContainerType');
+    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('editContainerType');
 
 });

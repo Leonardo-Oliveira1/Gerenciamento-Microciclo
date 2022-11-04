@@ -31,6 +31,7 @@
                         <th>Tipo de recipiente</th>
                         <th>Adicionado por</th>
                         <th>Data de registro</th>
+                        <th>Última alteração</th>
                     </tr>
                 </thead>
 
@@ -55,6 +56,7 @@
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $container->name }}</td>
                         <td>{{ $container->add_by }}</td>
                         <td>{{ date('d/m/Y', strtotime($container->created_at)) }}</td>
+                        <td>{{ date('d/m/Y', strtotime($container->updated_at)) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
