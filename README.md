@@ -23,16 +23,15 @@
 
 <h2>Features</h2>
 
-- [x] Cadastro  e login de usuário
+- [x] Cadastro e login de usuário
 - [x] Sistema de hierarquia com níveis de acesso entre os usuários
-- [x] Cadastro de categorias e recipientes
-- [x] Cadastro de itens
+- [x] Manipulação de categorias e recipientes
+- [ ] Manipulação de itens
 - [ ] Controle de estoque
 - [ ] Processos operacionais
 
 <br>
 
-<hr>
 
 ### Cadastro e login com hierarquia
 A hierarquia utilizada no projeto é a de **Colaboradores** e **Administradores**. As permissões de cada um desses é dividida da seguinte forma:
@@ -46,6 +45,16 @@ A hierarquia utilizada no projeto é a de **Colaboradores** e **Administradores*
 O **sistema de cadastro** é o trivial utilizado nos sites: contém apenas o nome, sobrenome, email e senha.
 
 Quando um novo usuário cria sua conta, o perfil dele é mantido como **'não aprovado'** até que um **Administrador** do sistema, em função privilegiada, **aprove sua conta**.
+
+<hr>
+
+
+### Manipulação de categorias e recipientes
+No sistema, a maneira de registrar o estoque passa por um processo além de somente registrá-lo. Para dar baixa ou acrescentar um item ao estoque, é necessário que **anteriormente já tenha sido registrado o item**, contendo o **tipo de recipiente** (pote, tubo, pacote) e também a **categoria do item** (reagente, vidraria, bactérias), além de informações como medidas e volume.
+
+**Somente o administrador** do sistema pode registrar recipientes e categorias, assim como os itens. 
+
+Caso tais informações não tenham sido adicionadas previamente, o fórmulario de estoque ficará limitado somente aos dados que estão presentes no momento. Esse mesmo problema também pode acontecer no formulário de criação de item.
 
 <hr>
 
