@@ -15,6 +15,7 @@
 - [Índice](#índice)
 - [Features](#features)
   - [Cadastro e login com hierarquia](#cadastro-e-login-com-hierarquia)
+  - [Manipulação de categorias e recipientes](#manipulação-de-categorias-e-recipientes)
 - [Instalações](#instalações)
   - [👨‍💻 Rodando a aplicação no ambiente de desenvolvimento](#-rodando-a-aplicação-no-ambiente-de-desenvolvimento)
   - [📊 Rodando a aplicação no servidor da UFRN](#-rodando-a-aplicação-no-servidor-da-ufrn)
