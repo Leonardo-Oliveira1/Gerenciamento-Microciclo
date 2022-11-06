@@ -62,8 +62,8 @@
 
         <li class="menu-item">
             <a href="/itens" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-category"></i>
-                <div data-i18n="Basic">Registrar itens</div>
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Basic">Itens</div>
             </a>
         </li>
 
@@ -81,12 +81,12 @@
             </a>
         </li>
 
-        <li class="menu-item">
+        <!--<li class="menu-item">
             <a href="/estimativas" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-data"></i>
                 <div data-i18n="Basic">Dados para a previsão de uso de reagentes</div>
             </a>
-        </li>
+        </li>-->
 
         @if ( Auth::user()->account_type == "Administrador(a)")
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>

@@ -27,7 +27,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                    @if ( Auth::user()->account_type == "Administrador(a)")
                         <th>Ações</th>
+                    @endif
                         <th>Tipo de recipiente</th>
                         <th>Última modificação por</th>
                         <th>Data de alteração</th>
@@ -37,6 +39,7 @@
                 <tbody>
                     @foreach ($containers as $container)
                     <tr>
+                        @if ( Auth::user()->account_type == "Administrador(a)")
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
@@ -52,6 +55,7 @@
                                 </div>
                             </div>
                         </td>
+                        @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $container->name }}</td>
                         <td>{{ $container->add_by }}</td>
                         <td>{{ date('d/m/Y', strtotime($container->updated_at)) }}</td>
