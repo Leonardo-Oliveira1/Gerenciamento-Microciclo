@@ -6,6 +6,7 @@ use App\CategoryItem;
 use Illuminate\Http\Request;
 
 use App\ContainerType;
+use App\Item;
 
 class tablesOperations extends Controller
 {
@@ -21,5 +22,12 @@ class tablesOperations extends Controller
         CategoryItem::where('id', $id)->delete();
 
         return redirect()->route('categories');
+    }
+
+    public function deleteItem($id)
+    {
+        Item::where('id', $id)->delete();
+
+        return redirect()->route('items');
     }
 }

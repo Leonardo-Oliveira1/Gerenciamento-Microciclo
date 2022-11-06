@@ -9,6 +9,9 @@
 
 @section('content')
 
+@include('utils.confirmPopUp')
+
+
 <style>
     body{
         background-color: #FAFAFA;
@@ -43,7 +46,8 @@
                         <th>Volume</th>
                         <th>Marca</th>
                         <th>Utilizado em</th>
-                        <th>Data de registro</th>
+                        <th>Data de alteração</th>
+                        <th>Última alteração por</th>
                     </tr>
                 </thead>
 
@@ -51,14 +55,22 @@
                     @foreach($items as $item)
                     @if ( Auth::user()->account_type == "Administrador(a)")
                     <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Deletar</a>
-                                </div>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/admin/edit/item/{{ $item->id}}"><i class="bx bx-edit-alt me-1"></i>Alterar</a>
+                                <hr>
+                                <a class='dropdown-item' style="cursor: pointer;" onclick="popup('{{ $item->name }}', 'apagar', 'o recipiente', 'deleteForm{{$item->name}}')">Deletar</a>
+
+                                <form method="POST" id="deleteForm{{$item->name}}" action="/admin/delete/item/{{ $item->id }}" enctype='multipart/form-data'>
+                                    @csrf
+                                    <input type="submit" class="dropdown-item" style="display: none;"></input>
+                                </form>
+
                             </div>
-                        </td>
+                        </div>
+                    </td>
                     @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
                         <td>{{ $item->category }}</td>
@@ -66,7 +78,8 @@
                         <td>{{ $item->volume }}{{ $item->volume_measure }}</td>
                         <td>{{ $item->brand }}</td>
                         <td>{{ $item->used_in }}</td>
-                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                        <td>{{ date('d/m/Y', strtotime($item->updated_at)) }}</td>
+                        <td>{{ $item->last_activity_by }}</td>
                     </tr>
                     @endforeach
 

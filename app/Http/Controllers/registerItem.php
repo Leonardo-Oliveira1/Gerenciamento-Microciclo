@@ -29,6 +29,12 @@ class registerItem extends Controller
         return $items;
     }
 
+    public function showItem($id){
+        $item = Item::where('id', "=", $id)->first();
+
+        return $item;
+    }
+
     public function getData(Request $request){
 
         $name = $request->input('item_name');
