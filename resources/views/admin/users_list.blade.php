@@ -6,6 +6,8 @@
 
 @section('content')
 
+@include('utils.confirmPopUp')
+
 <style>
     body {
         background-color: #fafafa;
@@ -65,10 +67,10 @@
                         <td>{{ $collaborator->email }}</td>
                         <td>{{ date('d/m/Y', strtotime($collaborator->created_at)) }}</td>
                         <td>
-                            <form method="POST" action="/admin/makeAdmin/{{ $collaborator->id }}" enctype='multipart/form-data'>
+                            <form method="POST" id="adminForm{{ $collaborator->id }}" action="/admin/makeAdmin/{{ $collaborator->id }}" enctype='multipart/form-data'>
                                 @csrf
                                 <div class="modal-footer">
-                                    <input type="submit" class="btn btn-primary" value="Tornar administrador"></input>
+                                    <a class="btn btn-primary" style="cursor: pointer; color: white;" onclick="popup('', 'tornar este usuário administrador', '', 'adminForm{{ $collaborator->id }}')">Tornar administrador(a)</a>
                                 </div>
                             </form>
                         </td>

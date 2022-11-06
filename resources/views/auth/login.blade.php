@@ -15,7 +15,7 @@
                     <!-- /Logo -->
                     <p class="mb-4">Faça o login em sua conta para poder utilizar o sistema.</p>
 
-                    <form onsubmit="loading()" id="formAuthentication" class="mb-3" action="/auth" method="POST">
+                    <form onsubmit="loading('main_container')" id="formAuthentication" class="mb-3" action="/auth" method="POST">
                         <div id="loading" style="display: none; z-index: 10; position: absolute; left: 173px;">
                             <img src="{{ asset('assets/img/loading.gif') }}" width="50" style="opacity: 1.0; filter: contrast(900%);" alt="">
                         </div>
@@ -52,12 +52,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    function loading() {
-        const loadingImg = document.getElementById("loading").style.display = "block";
-        const OpacityMainContainer = document.getElementById("main_container").style.opacity = "0.2";
-    }
-</script>
 
 @endsection

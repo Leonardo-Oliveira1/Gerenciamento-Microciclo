@@ -1,7 +1,7 @@
 <script>
     function popup(name, primitiveAction, item_type, HTML_ID) {
         swal({
-                title: `Realmente deseja ${primitiveAction} ${item_type} '${name}'?`,
+                title: `Realmente deseja ${primitiveAction} ${item_type} ${name}?`,
                 icon: 'warning',
                 buttons: true,
                 dangerMode: false,
