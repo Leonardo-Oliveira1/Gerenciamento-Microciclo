@@ -69,9 +69,7 @@
                         <td>
                             <form method="POST" id="adminForm{{ $collaborator->id }}" action="/admin/makeAdmin/{{ $collaborator->id }}" enctype='multipart/form-data'>
                                 @csrf
-                                <div class="modal-footer">
-                                    <a class="btn btn-primary" style="cursor: pointer; color: white;" onclick="popup('', 'tornar este usuário administrador', '', 'adminForm{{ $collaborator->id }}')">Tornar administrador(a)</a>
-                                </div>
+                                <a class="btn btn-primary" style="cursor: pointer; color: white;" onclick="popup('', 'tornar este usuário administrador', '', 'adminForm{{ $collaborator->id }}')">Tornar administrador(a)</a>
                             </form>
                         </td>
                     </tr>
