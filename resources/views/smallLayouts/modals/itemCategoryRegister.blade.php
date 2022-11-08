@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="POST" action="/items/register_category" enctype='multipart/form-data'>
+            <form method="POST" action="{{ route('register_category') }}" enctype='multipart/form-data'>
                 @csrf
 
                 <div class="modal-body">

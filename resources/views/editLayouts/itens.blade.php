@@ -12,7 +12,7 @@
 
     <div class="row" style="align-items: center; justify-content:center;">
         <div class="demo-vertical-spacing demo-only-element col-md-8">
-            <form method="POST" action="/admin/edit/item/save/{{$item->id}}" enctype='multipart/form-data'>
+            <form method="POST" action="{{ route('saveItem', $item->id) }}" enctype='multipart/form-data'>
                 @csrf
                 <div class="modal-body">
                     <div class="row">

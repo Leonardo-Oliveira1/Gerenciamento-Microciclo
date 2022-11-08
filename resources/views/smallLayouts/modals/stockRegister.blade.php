@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="POST" action="/estoque/register_stock" enctype='multipart/form-data'>
+            <form method="POST" action="{{ route('register_stock') }}" enctype='multipart/form-data'>
                 @csrf
 
 

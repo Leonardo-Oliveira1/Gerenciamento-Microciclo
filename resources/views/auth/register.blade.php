@@ -16,7 +16,7 @@
                         <h3>Cadastro</h3>
                     </center>
 
-                    <form onsubmit="loading('main_container')" id="formAuthentication" class="mb-3" action="register_create_user" method="POST">
+                    <form onsubmit="loading('main_container')" id="formAuthentication" class="mb-3" action="{{ route('register_create_user') }}" method="POST">
                         <div id="loading" style="display: none; z-index: 10; position: absolute; left: 178px; top: 300px;">
                             <img src="{{ asset('assets/img/loading.gif') }}" width="50" style="opacity: 1.0; filter: contrast(900%);" alt="">
                         </div>
@@ -44,7 +44,7 @@
 
                     <p class="text-center">
                         <span>Já possui uma conta?</span>
-                        <a href="login">
+                        <a href="{{ route('login') }}">
                             <span>Conecte-se</span>
                         </a>
                     </p>

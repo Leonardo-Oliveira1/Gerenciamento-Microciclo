@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="/" class="app-brand-link">
+        <a href="{{ route('home') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <img src="{{ asset('assets/img/microciclo_logo.svg') }}" style="width: 40px;" alt="logo">
             </span>
@@ -54,28 +54,28 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Estoque</span></li>
         <!-- Cards -->
         <li class="menu-item">
-            <a href="/" class="menu-link">
+            <a href="{{ route('stock') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Estoque</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/itens" class="menu-link">
+            <a href="{{ route('items') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="Basic">Itens</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/categorias" class="menu-link">
+            <a href="{{ route('categories') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Basic">Categorias de itens</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/recipientes" class="menu-link">
+            <a href="{{ route('containers') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bong"></i>
                 <div data-i18n="Basic">Tipos de recipientes</div>
             </a>
@@ -92,14 +92,14 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>
 
         <li class="menu-item">
-            <a href="/lista_de_usuarios" class="menu-link">
+            <a href="{{ route('users_list') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Basic">Lista de usuários</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/aprovar_usuarios" class="menu-link">
+            <a href="{{ route('approve_users') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-plus"></i>
                 <div data-i18n="Basic">Aprovar usuários</div>
             </a>

@@ -12,7 +12,7 @@
 
     <div class="row" style="align-items: center; justify-content:center;">
         <div class="demo-vertical-spacing demo-only-element col-md-8">
-            <form method="POST" action="/admin/edit/container_type/save/{{$container->id}}" enctype='multipart/form-data'>
+            <form method="POST" action="{{ route('saveContainerTypeSave', $container->id) }}" enctype='multipart/form-data'>
                 @csrf
                 <div class="mb-3">
                     <label for="defaultFormControlInput" class="form-label">Nome</label>

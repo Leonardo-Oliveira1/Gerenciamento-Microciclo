@@ -15,7 +15,7 @@
                     <!-- /Logo -->
                     <p class="mb-4">Faça o login em sua conta para poder utilizar o sistema.</p>
 
-                    <form onsubmit="loading('main_container')" id="formAuthentication" class="mb-3" action="/auth" method="POST">
+                    <form onsubmit="loading('main_container')" id="formAuthentication" class="mb-3" action="{{ route('auth') }}" method="POST">
                         <div id="loading" style="display: none; z-index: 10; position: absolute; left: 173px;">
                             <img src="{{ asset('assets/img/loading.gif') }}" width="50" style="opacity: 1.0; filter: contrast(900%);" alt="">
                         </div>
@@ -42,7 +42,7 @@
 
                     <p class="text-center">
                         <span>Ainda não possui uma conta?</span>
-                        <a href="register">
+                        <a href="{{ route('register') }}">
                             <span>Crie uma agora!</span>
                         </a>
                     </p>

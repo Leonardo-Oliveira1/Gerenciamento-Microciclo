@@ -58,14 +58,14 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     //Tables Operations
     Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
     Route::post('/admin/delete/category/{id}', [tablesOperations::class, 'deleteCategory'])->name('deleteCategory');
-    Route::post('/admin/delete/item/{id}', [tablesOperations::class, 'deleteItem'])->name('deleteCategory');
-
-    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('editContainerTypeSave');
-    Route::post('/admin/edit/category/save/{id}', [editCategory::class, 'edit'])->name('editCategorySave');
-    Route::post('/admin/edit/item/save/{id}', [editItem::class, 'edit'])->name('editItem');
+    Route::post('/admin/delete/item/{id}', [tablesOperations::class, 'deleteItem'])->name('deleteItem');
 
     Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
     Route::get('/admin/edit/category/{id}', [editCategory::class, 'index'])->name('editCategory');
     Route::get('/admin/edit/item/{id}', [editItem::class, 'index'])->name('editItem');
+
+    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('saveContainerTypeSave');
+    Route::post('/admin/edit/category/save/{id}', [editCategory::class, 'edit'])->name('saveCategorySave');
+    Route::post('/admin/edit/item/save/{id}', [editItem::class, 'edit'])->name('saveItem');
 
 });

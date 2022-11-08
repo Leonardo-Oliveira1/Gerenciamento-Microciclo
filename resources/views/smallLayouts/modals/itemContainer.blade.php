@@ -7,7 +7,7 @@
             </div>
 
 
-            <form method="POST" action="/items/register_container_type" enctype='multipart/form-data'>
+            <form method="POST" action="{{ route('register_container_type') }}" enctype='multipart/form-data'>
                 @csrf
 
                 <div class="modal-body">

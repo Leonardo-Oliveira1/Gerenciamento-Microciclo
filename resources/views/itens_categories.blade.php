@@ -44,10 +44,10 @@
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/admin/edit/category/{{ $category->id}}"><i class="bx bx-edit-alt me-1"></i>Alterar nome</a>
+                                    <a class="dropdown-item" href="{{ route('editCategory', $category->id) }}"><i class="bx bx-edit-alt me-1"></i>Alterar nome</a>
                                     <hr>
                                     <a class='dropdown-item' style="cursor: pointer;" onclick="popup('{{ $category->name }}', 'apagar', 'a categoria', 'deleteForm{{$category->name}}')">Deletar</a>
-                                    <form method="POST" id="deleteForm{{$category->name}}" action="/admin/delete/category/{{ $category->id }}" enctype='multipart/form-data'>
+                                    <form method="POST" id="deleteForm{{$category->name}}" action="{{ route('deleteCategory', $category->id) }}" enctype='multipart/form-data'>
                                         @csrf
                                         <input type="submit" class="dropdown-item" style="display: none;"></input>
                                     </form>

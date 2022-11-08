@@ -67,7 +67,7 @@
                         <td>{{ $collaborator->email }}</td>
                         <td>{{ date('d/m/Y', strtotime($collaborator->created_at)) }}</td>
                         <td>
-                            <form method="POST" id="adminForm{{ $collaborator->id }}" action="/admin/makeAdmin/{{ $collaborator->id }}" enctype='multipart/form-data'>
+                            <form method="POST" id="adminForm{{ $collaborator->id }}" action="{{ route('makeAdmin', $collaborator->id) }}" enctype='multipart/form-data'>
                                 @csrf
                                 <a class="btn btn-primary" style="cursor: pointer; color: white;" onclick="popup('', 'tornar este usuário administrador', '', 'adminForm{{ $collaborator->id }}')">Tornar administrador(a)</a>
                             </form>
