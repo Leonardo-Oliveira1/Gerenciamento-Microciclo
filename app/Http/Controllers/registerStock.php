@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerItem;
 use App\ItemStock;
-use Mockery\Undefined;
 
 class registerStock extends Controller
 {
