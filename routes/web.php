@@ -32,11 +32,6 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
     Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');
     Route::get('/recipientes', [registerContainerType::class, 'index'])->name('containers');
 
-    Route::post('/estoque/register_stock', [registerStock::class, 'store'])->name('register_stock');
-    Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
-    Route::post('/items/register_category', [registerCategory::class, 'store'])->name('register_category');
-    Route::post('/items/register_container_type', [registerContainerType::class, 'store'])->name('register_container_type');
-
     /*Route::get('/estimativas', function () {
         return view('reagents_estimated');
     })->name('reagents_estimated');*/
@@ -46,7 +41,13 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
 //Admin Routes
 Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'])->group(function () {
 
-    //Users Operations
+    //Registering
+    Route::post('/estoque/register_stock', [registerStock::class, 'store'])->name('register_stock');
+    Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
+    Route::post('/items/register_category', [registerCategory::class, 'store'])->name('register_category');
+    Route::post('/items/register_container_type', [registerContainerType::class, 'store'])->name('register_container_type');
+
+    //Control users Operations
     Route::get('/lista_de_usuarios', [adminUsersActions::class, 'index'])->name('users_list');
     Route::post('/admin/makeAdmin/{id}', [adminUsersActions::class, 'makeAdmin'])->name('makeAdmin');
 

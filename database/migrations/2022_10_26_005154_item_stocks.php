@@ -15,7 +15,7 @@ class ItemStocks extends Migration
     {
         Schema::create('item_stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->integer('quantity');
             $table->date('expiration_date');
             $table->string('last_activity_by');

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Item;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerItem;
 use App\ItemStock;
+use Mockery\Undefined;
 
 class registerStock extends Controller
 {
@@ -19,19 +19,57 @@ class registerStock extends Controller
         $categories = new registerCategory;
         $containers = new registerContainerType;
 
+
         return view('stock', [
             'data' => $this->getData($request),
             'items' => $item->showItems(),
-            'stocks' => $this->showStock(),
+            'containers' => $containers->showContainers(),
             'categories' => $categories->showCategories(),
-            'containers' => $containers->showContainers()]);
+            'stocks' => $this->Item()]);
     }
 
-    public function showStock(){
-        $stock = ItemStock::orderBy('name', 'ASC')->get();
+    public function Item(){
+        for ($i=0; $i < count($this->itemName()); $i++) {
+            $item[] = array(
+                'name' => $this->itemName()[$i]->name,
+                'total_quantity' => $this->totalStock($this->itemName()[$i]->name),
+                'next_expiration_date' => $this->nextExpirationDate($this->itemName()[$i]->name),
+                'last_activity_by' => Auth::user()->name,
+                'updated_at' => $this->lastUpdate()
+            );
+        }
 
-        return $stock;
+
+        if(count($this->itemName()) != 0){
+            return $item;
+        }
     }
+
+    public function itemName(){
+        $stocks = ItemStock::select('name')->distinct()->get();
+
+        return $stocks;
+    }
+
+
+    public function totalStock($name){
+        $total = ItemStock::select()->whereRaw("name = '$name'")->sum("quantity");
+
+        return $total;
+    }
+
+    public function nextExpirationDate($name){
+        $next_expiration_date = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("name = '$name' && expiration_date >= CURDATE()")->first();
+
+        return $next_expiration_date->expiration_date;
+    }
+
+    public function lastUpdate(){
+        $last_update = ItemStock::orderBy('updated_at', 'ASC')->first();
+
+        return $last_update->updated_at;
+    }
+
 
     public function getData(Request $request){
 
@@ -64,12 +102,7 @@ class registerStock extends Controller
         $stock->expiration_date = $data->item->expiration_date;
         $stock->last_activity_by = $data->item->last_activity_by;
 
-        if (!ItemStock::where('name', $data->item->name)->get()->isEmpty()) {
-            return redirect()->route('stock')
-            ->with('error','Item já cadastrado!');
-        }else{
-            $stock->save();
-        }
+        $stock->save();
 
         return redirect('/');
     }

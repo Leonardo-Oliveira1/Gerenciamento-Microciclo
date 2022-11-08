@@ -32,7 +32,7 @@
                         </div>
                         <div class="col mb-4" style="margin-top: 5px;">
                             <label for="quantity" class="form-label">Quantidade no estoque <span style="color: red;">*</span></label>
-                            <input type="number" name="quantity" id="quantity" class="form-control" required placeholder="0">
+                            <input type="number" name="quantity" id="quantity" class="form-control" min="0" required placeholder="0">
                         </div>
                     </div>
                 </div>
