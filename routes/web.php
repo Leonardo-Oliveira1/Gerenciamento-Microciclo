@@ -11,6 +11,7 @@ use App\Http\Controllers\adminUsersActions;
 use App\Http\Controllers\editCategory;
 use App\Http\Controllers\editContainersTypes;
 use App\Http\Controllers\editItem;
+use App\Http\Controllers\editStock;
 use App\Http\Controllers\registerStock;
 use App\Http\Controllers\tablesOperations;
 
@@ -56,14 +57,17 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     Route::post('/admin/decline/{id}', [adminUsersActions::class, 'declineCollaborator'])->name('declineUser');
 
     //Tables Operations
-    Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
-    Route::post('/admin/delete/category/{id}', [tablesOperations::class, 'deleteCategory'])->name('deleteCategory');
-    Route::post('/admin/delete/item/{id}', [tablesOperations::class, 'deleteItem'])->name('deleteItem');
-
+    Route::get('/admin/edit/stock/{name}', [editStock::class, 'index'])->name('editStock');
+    Route::get('/admin/edit/stockoff/{id}', [editStock::class, 'editStock'])->name('stock_off');
     Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
     Route::get('/admin/edit/category/{id}', [editCategory::class, 'index'])->name('editCategory');
     Route::get('/admin/edit/item/{id}', [editItem::class, 'index'])->name('editItem');
 
+    Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
+    Route::post('/admin/delete/category/{id}', [tablesOperations::class, 'deleteCategory'])->name('deleteCategory');
+    Route::post('/admin/delete/item/{id}', [tablesOperations::class, 'deleteItem'])->name('deleteItem');
+
+    Route::post('/admin/edit/stockoff/save/{id}', [editStock::class, 'edit'])->name('save_stock_off');
     Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('saveContainerTypeSave');
     Route::post('/admin/edit/category/save/{id}', [editCategory::class, 'edit'])->name('saveCategorySave');
     Route::post('/admin/edit/item/save/{id}', [editItem::class, 'edit'])->name('saveItem');

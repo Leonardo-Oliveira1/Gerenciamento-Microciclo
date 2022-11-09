@@ -50,6 +50,17 @@ class registerStock extends Controller
         return $stocks;
     }
 
+    public function selectItemByName($name){
+        $stocks = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("name = '$name' && quantity > 0")->get();
+
+        return $stocks;
+    }
+
+    public function selectItemById($id){
+        $item = ItemStock::where('id', "=", $id)->first();
+
+        return $item;
+    }
 
     public function totalStock($name){
         $total = ItemStock::select()->whereRaw("name = '$name'")->sum("quantity");

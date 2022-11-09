@@ -17,5 +17,13 @@
                 }
             });
     }
-</script>
 
+    function inputPopUp(text) {
+        swal(text, {
+                content: "input",
+            })
+            .then((value) => {
+                swal(`You typed: ${value}`);
+            });
+    }
+</script>
