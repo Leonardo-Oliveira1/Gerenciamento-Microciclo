@@ -10,6 +10,8 @@ use App\Http\Controllers\registerCategory;
 use App\Http\Controllers\registerItem;
 use App\ItemStock;
 
+use App\Http\Controllers\historyController;
+
 class registerStock extends Controller
 {
     public function index(Request $request){
@@ -106,6 +108,7 @@ class registerStock extends Controller
         $data = $this->getData($request);
 
         $stock = new ItemStock;
+        $history = new historyController;
 
         $stock->name = $data->item->name;
         $stock->quantity = $data->item->quantity;
@@ -113,6 +116,7 @@ class registerStock extends Controller
         $stock->last_activity_by = $data->item->last_activity_by;
 
         $stock->save();
+        $history->saveStockAddHistory(Auth::user()->name, $stock->quantity, $stock->name);
 
         return redirect('/');
     }

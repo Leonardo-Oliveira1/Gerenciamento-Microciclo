@@ -7,7 +7,7 @@ use App\Item;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\registerCategory;
-
+use App\Http\Controllers\historyController;
 
 class registerItem extends Controller
 {
@@ -68,6 +68,7 @@ class registerItem extends Controller
         $data = $this->getData($request);
 
         $item = new Item;
+        $history = new historyController;
 
         $item->name = $data->item->name;
         $item->category = $data->item->category;
@@ -94,6 +95,7 @@ class registerItem extends Controller
             ->with('error','Item já cadastrado!');
         }else{
             $item->save();
+            $history->saveDataHistory(Auth::user()->name, 'adicionou um novo item chamado', $item->name);
         }
 
         return redirect('/itens');

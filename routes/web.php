@@ -12,6 +12,7 @@ use App\Http\Controllers\editCategory;
 use App\Http\Controllers\editContainersTypes;
 use App\Http\Controllers\editItem;
 use App\Http\Controllers\editStock;
+use App\Http\Controllers\historyController;
 use App\Http\Controllers\registerStock;
 use App\Http\Controllers\tablesOperations;
 
@@ -32,6 +33,7 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
     Route::get('/itens', [registerItem::class, 'index'])->name('items');
     Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');
     Route::get('/recipientes', [registerContainerType::class, 'index'])->name('containers');
+    Route::get('/historico', [historyController::class, 'index'])->name('history');
 
     /*Route::get('/estimativas', function () {
         return view('reagents_estimated');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CategoryItem;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\historyController;
 
 class registerCategory extends Controller
 {
@@ -48,6 +49,7 @@ class registerCategory extends Controller
         $data = $this->getData($request);
 
         $category = new CategoryItem;
+        $history = new historyController;
 
         $category->name = $data->category->name;
         $category->add_by = $data->category->add_by;
@@ -57,6 +59,7 @@ class registerCategory extends Controller
             ->with('error','Categoria já cadastrada!');
         }else{
             $category->save();
+            $history->saveDataHistory(Auth::user()->name, 'adicionou uma nova categoria chamada', $category->name);
         }
         return redirect('/categorias');
     }

@@ -81,6 +81,13 @@
             </a>
         </li>
 
+        <li class="menu-item">
+            <a href="{{ route('history') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <div data-i18n="Basic">Histórico</div>
+            </a>
+        </li>
+
         <!--<li class="menu-item">
             <a href="/estimativas" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-data"></i>
@@ -104,6 +111,7 @@
                 <div data-i18n="Basic">Aprovar usuários</div>
             </a>
         </li>
+        <!-- /Components -->
     @endif
 
 

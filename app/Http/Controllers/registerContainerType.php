@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\ContainerType;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\historyController;
+
 class registerContainerType extends Controller
 {
     public function index(Request $request){
@@ -47,6 +49,7 @@ class registerContainerType extends Controller
         $data = $this->getData($request);
 
         $container = new ContainerType;
+        $history = new historyController;
 
         $container->name = $data->container->name;
         $container->add_by = $data->container->add_by;
@@ -56,6 +59,7 @@ class registerContainerType extends Controller
             ->with('error','Recipiente já cadastrado!');
         }else{
             $container->save();
+            $history->saveDataHistory(Auth::user()->name, 'adicionou um novo recipiente chamado', $container->name);
         }
         return redirect('/recipientes');
     }
