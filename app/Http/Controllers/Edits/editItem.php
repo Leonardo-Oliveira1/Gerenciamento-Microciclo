@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Edits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 use App\Item;
 
-use App\Http\Controllers\registerItem;
-use App\Http\Controllers\registerContainerType;
-use App\Http\Controllers\registerCategory;
+use App\Http\Controllers\Registers\registerItem;
+use App\Http\Controllers\Registers\registerContainerType;
+use App\Http\Controllers\Registers\registerCategory;
 
 class editItem extends Controller
 {

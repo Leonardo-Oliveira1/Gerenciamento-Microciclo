@@ -2,18 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\loginUser;
-use App\Http\Controllers\registerCategory;
-use App\Http\Controllers\registerContainerType;
-use App\Http\Controllers\registerItem;
-use App\Http\Controllers\registerUser;
-use App\Http\Controllers\adminUsersActions;
-use App\Http\Controllers\editCategory;
-use App\Http\Controllers\editContainersTypes;
-use App\Http\Controllers\editItem;
-use App\Http\Controllers\editStock;
+use App\Http\Controllers\Users\registerUser;
+use App\Http\Controllers\Users\loginUser;
+
+use App\Http\Controllers\Registers\registerCategory;
+use App\Http\Controllers\Registers\registerContainerType;
+use App\Http\Controllers\Registers\registerItem;
+use App\Http\Controllers\Registers\registerStock;
+
+use App\Http\Controllers\Edits\editCategory;
+use App\Http\Controllers\Edits\editContainersTypes;
+use App\Http\Controllers\Edits\editItem;
+use App\Http\Controllers\Edits\editStock;
+
+use App\Http\Controllers\Users\adminUsersActions;
+
+
 use App\Http\Controllers\historyController;
-use App\Http\Controllers\registerStock;
 use App\Http\Controllers\tablesOperations;
 
 //Authentication Routes

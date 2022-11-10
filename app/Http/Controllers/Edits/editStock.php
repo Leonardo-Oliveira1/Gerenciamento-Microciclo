@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Edits;
 
 use App\ItemStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\registerStock;
+use App\Http\Controllers\Registers\registerStock;
 
 class editStock extends Controller
 {

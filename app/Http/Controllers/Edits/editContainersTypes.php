@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Edits;
 
 use Illuminate\Http\Request;
 use App\ContainerType;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\registerContainerType;
+use App\Http\Controllers\Registers\registerContainerType;
 
 
 class editContainersTypes extends Controller

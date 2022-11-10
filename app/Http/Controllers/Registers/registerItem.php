@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Registers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\registerCategory;
-use App\Http\Controllers\historyController;
+use App\Http\Controllers\Registers\registerCategory;
+use App\Http\Controllers\HistoryController;
 
 class registerItem extends Controller
 {

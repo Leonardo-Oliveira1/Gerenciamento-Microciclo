@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Edits;
 
 use Illuminate\Http\Request;
 use App\CategoryItem;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\registerCategory;
+use App\Http\Controllers\Registers\registerCategory;
 
 class editCategory extends Controller
 {
