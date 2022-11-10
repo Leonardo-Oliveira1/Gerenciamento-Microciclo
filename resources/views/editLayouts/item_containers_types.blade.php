@@ -16,7 +16,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="defaultFormControlInput" class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="name" id="defaultFormControlInput" value="{{$container->name}}" aria-describedby="defaultFormControlHelp" />
+                    <input type="text" class="form-control" name="container_name" id="defaultFormControlInput" value="{{$container->name}}" aria-describedby="defaultFormControlHelp" />
                 </div>
 
                 <button type="button" onclick="window.history.back()" class="btn btn-label-secondary">Cancelar</button>

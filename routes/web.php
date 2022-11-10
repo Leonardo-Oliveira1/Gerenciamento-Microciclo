@@ -4,22 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Users\registerUser;
 use App\Http\Controllers\Users\loginUser;
-
-use App\Http\Controllers\Registers\registerCategory;
-use App\Http\Controllers\Registers\registerContainerType;
-use App\Http\Controllers\Registers\registerItem;
-use App\Http\Controllers\Registers\registerStock;
-
-use App\Http\Controllers\Edits\editCategory;
-use App\Http\Controllers\Edits\editContainersTypes;
-use App\Http\Controllers\Edits\editItem;
-use App\Http\Controllers\Edits\editStock;
-
 use App\Http\Controllers\Users\adminUsersActions;
 
-
 use App\Http\Controllers\historyController;
-use App\Http\Controllers\tablesOperations;
+
+use App\Http\Controllers\Items\Category;
+use App\Http\Controllers\Items\ContainersTypes;
+use App\Http\Controllers\Items\ItemController;
+use App\Http\Controllers\Stock;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -33,11 +25,11 @@ Route::get('/logout', [loginUser::class, 'logout'])->name('logout');
 
 //Dashboard Routes
 Route::middleware(['checksession', 'check.user.account.type'])->group(function () {
-    Route::get('/', [registerStock::class, 'index'])->name('home');
-    Route::get('/estoque', [registerStock::class, 'index'])->name('stock');
-    Route::get('/itens', [registerItem::class, 'index'])->name('items');
-    Route::get('/categorias', [registerCategory::class, 'index'])->name('categories');
-    Route::get('/recipientes', [registerContainerType::class, 'index'])->name('containers');
+    Route::get('/', [Stock::class, 'index'])->name('home');
+    Route::get('/estoque', [Stock::class, 'index'])->name('stock');
+    Route::get('/itens', [ItemController::class, 'index'])->name('items');
+    Route::get('/categorias', [Category::class, 'index'])->name('categories');
+    Route::get('/recipientes', [ContainersTypes::class, 'index'])->name('containers');
     Route::get('/historico', [historyController::class, 'index'])->name('history');
 
     /*Route::get('/estimativas', function () {
@@ -50,10 +42,10 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
 Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'])->group(function () {
 
     //Registering
-    Route::post('/estoque/register_stock', [registerStock::class, 'store'])->name('register_stock');
-    Route::post('/items/register_item', [registerItem::class, 'store'])->name('register_item');
-    Route::post('/items/register_category', [registerCategory::class, 'store'])->name('register_category');
-    Route::post('/items/register_container_type', [registerContainerType::class, 'store'])->name('register_container_type');
+    Route::post('/estoque/register_stock', [Stock::class, 'store'])->name('register_stock');
+    Route::post('/items/register_item', [ItemController::class, 'store'])->name('register_item');
+    Route::post('/items/register_category', [Category::class, 'store'])->name('register_category');
+    Route::post('/items/register_container_type', [ContainersTypes::class, 'store'])->name('register_container_type');
 
     //Control users Operations
     Route::get('/lista_de_usuarios', [adminUsersActions::class, 'index'])->name('users_list');
@@ -64,19 +56,19 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     Route::post('/admin/decline/{id}', [adminUsersActions::class, 'declineCollaborator'])->name('declineUser');
 
     //Tables Operations
-    Route::get('/admin/edit/stock/{name}', [editStock::class, 'index'])->name('editStock');
-    Route::get('/admin/edit/stockoff/{id}', [editStock::class, 'editStock'])->name('stock_off');
-    Route::get('/admin/edit/container_type/{id}', [editContainersTypes::class, 'index'])->name('editContainerType');
-    Route::get('/admin/edit/category/{id}', [editCategory::class, 'index'])->name('editCategory');
-    Route::get('/admin/edit/item/{id}', [editItem::class, 'index'])->name('editItem');
+    Route::get('/admin/edit/stock/{name}', [Stock::class, 'indexEdit'])->name('editStock');
+    Route::get('/admin/edit/stockoff/{id}', [Stock::class, 'editStock'])->name('stock_off');
+    Route::get('/admin/edit/container_type/{id}', [ContainersTypes::class, 'indexEdit'])->name('editContainerType');
+    Route::get('/admin/edit/category/{id}', [Category::class, 'indexEdit'])->name('editCategory');
+    Route::get('/admin/edit/item/{id}', [ItemController::class, 'indexEdit'])->name('editItem');
 
-    Route::post('/admin/delete/container_type/{id}', [tablesOperations::class, 'deleteContainerType'])->name('deleteContainerType');
-    Route::post('/admin/delete/category/{id}', [tablesOperations::class, 'deleteCategory'])->name('deleteCategory');
-    Route::post('/admin/delete/item/{id}', [tablesOperations::class, 'deleteItem'])->name('deleteItem');
+    Route::post('/admin/delete/container_type/{id}', [ContainersTypes::class, 'delete'])->name('deleteContainerType');
+    Route::post('/admin/delete/category/{id}', [Category::class, 'delete'])->name('deleteCategory');
+    Route::post('/admin/delete/item/{id}', [ItemController::class, 'delete'])->name('deleteItem');
 
-    Route::post('/admin/edit/stockoff/save/{id}', [editStock::class, 'edit'])->name('save_stock_off');
-    Route::post('/admin/edit/container_type/save/{id}', [editContainersTypes::class, 'edit'])->name('saveContainerTypeSave');
-    Route::post('/admin/edit/category/save/{id}', [editCategory::class, 'edit'])->name('saveCategorySave');
-    Route::post('/admin/edit/item/save/{id}', [editItem::class, 'edit'])->name('saveItem');
+    Route::post('/admin/edit/stockoff/save/{id}', [Stock::class, 'edit'])->name('save_stock_off');
+    Route::post('/admin/edit/container_type/save/{id}', [ContainersTypes::class, 'edit'])->name('saveContainerTypeSave');
+    Route::post('/admin/edit/category/save/{id}', [Category::class, 'edit'])->name('saveCategorySave');
+    Route::post('/admin/edit/item/save/{id}', [ItemController::class, 'edit'])->name('saveItem');
 
 });
