@@ -12,29 +12,17 @@ class historyController extends Controller
     }
 
     public function histories(){
-        $history = History::orderBy('created_at', 'DESC')->get();
+        $history = History::orderBy('created_at', 'DESC')->take(20)->get();
 
         return $history;
     }
 
-    public function saveDataHistory($user, $action, $type){
+    public function StockHistory($user, $units, $item, $text){
         $history = new History;
 
-        $text = "$action '$type'";
-
         $history->user = $user;
-        $history->text = $text;
-
-        $history->save();
-
-    }
-
-    public function saveStockAddHistory($user, $quantity, $type){
-        $history = new History;
-
-        $text = "adicionou $quantity unidades de '$type'";
-
-        $history->user = $user;
+        $history->units = $units;
+        $history->item = $item;
         $history->text = $text;
 
         $history->save();

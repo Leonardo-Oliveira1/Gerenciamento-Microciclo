@@ -69,7 +69,7 @@ class Stock extends Controller
 
     public function selectItemByName($name)
     {
-        $stocks = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("name = '$name' && quantity > 0")->get();
+        $stocks = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("name = '$name'")->get();
 
         return $stocks;
     }
@@ -135,23 +135,33 @@ class Stock extends Controller
         $stock->last_activity_by = $data->item->last_activity_by;
 
         $stock->save();
-        $history->saveStockAddHistory(Auth::user()->name, $stock->quantity, $stock->name);
+        $history->StockHistory(Auth::user()->name, $stock->quantity, $stock->name, "adicionou");
 
         return redirect('/');
     }
 
-    public function edit(Request $request, $id)
+    public function stockOff(Request $request, $id)
     {
-        $data = $this->getData($request);
+        $history = new historyController;
 
+        $data = $this->getData($request);
         $item = ItemStock::find($id);
 
-        $item->name = $data->item->name;
-        $item->category = $data->item->category;
+        $stockOff = $request->input('stockOff');
 
+        $newQuantity = $item->quantity - $stockOff;
+        $item->quantity = $newQuantity;
+        $history->StockHistory(Auth::user()->name, $stockOff, $item->name, "registrou baixa de");
         $item->save();
 
-        return redirect('/itens')
-            ->with('success', 'Item alterado com sucesso!');
+        if($newQuantity <= 0){
+            ItemStock::where('id', $id)->delete();
+            return redirect()->route('editStock', $item->name)
+            ->with('success', 'Baixa registrada com sucesso. As unidades deste item se tornou inferior a zero, por isso, ele não aparecerá mais nesta listagem.');
+        }
+
+        return redirect()->route('editStock', $item->name)
+            ->with('success', 'Baixa de '.$stockOff.' unidades registrada com sucesso!');
+
     }
 }

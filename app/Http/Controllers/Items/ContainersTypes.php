@@ -70,7 +70,6 @@ class ContainersTypes extends Controller
                 ->with('error', 'Recipiente já cadastrado!');
         } else {
             $container->save();
-            $history->saveDataHistory(Auth::user()->name, 'adicionou um novo recipiente chamado', $container->name);
         }
         return redirect('/recipientes');
     }

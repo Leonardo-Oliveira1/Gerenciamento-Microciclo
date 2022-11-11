@@ -70,7 +70,6 @@ class Category extends Controller
                 ->with('error', 'Categoria já cadastrada!');
         } else {
             $category->save();
-            $history->saveDataHistory(Auth::user()->name, 'adicionou uma nova categoria chamada', $category->name);
         }
         return redirect('/categorias');
     }

@@ -66,7 +66,7 @@ Route::middleware(['checksession', 'check.user.account.type', 'check.user.admin'
     Route::post('/admin/delete/category/{id}', [Category::class, 'delete'])->name('deleteCategory');
     Route::post('/admin/delete/item/{id}', [ItemController::class, 'delete'])->name('deleteItem');
 
-    Route::post('/admin/edit/stockoff/save/{id}', [Stock::class, 'edit'])->name('save_stock_off');
+    Route::post('/admin/edit/stockoff/save/{id}', [Stock::class, 'stockOff'])->name('save_stock_off');
     Route::post('/admin/edit/container_type/save/{id}', [ContainersTypes::class, 'edit'])->name('saveContainerTypeSave');
     Route::post('/admin/edit/category/save/{id}', [Category::class, 'edit'])->name('saveCategorySave');
     Route::post('/admin/edit/item/save/{id}', [ItemController::class, 'edit'])->name('saveItem');

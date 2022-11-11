@@ -113,7 +113,6 @@ class ItemController extends Controller
                 ->with('error', 'Item já cadastrado!');
         } else {
             $item->save();
-            $history->saveDataHistory(Auth::user()->name, 'adicionou um novo item chamado', $item->name);
         }
 
         return redirect('/itens');

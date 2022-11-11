@@ -24,6 +24,7 @@
 
     <div class="row">
         <div class="table-responsive">
+        @include('flash-message')
 
             <!--Admins-->
             <table class="table">
