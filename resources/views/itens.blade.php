@@ -46,8 +46,6 @@
                         <th>Volume</th>
                         <th>Marca</th>
                         <th>Utilizado em</th>
-                        <th>Data de alteração</th>
-                        <th>Última alteração por</th>
                     </tr>
                 </thead>
 
@@ -78,8 +76,6 @@
                         <td>{{ $item->volume }}{{ $item->volume_measure }}</td>
                         <td>{{ $item->brand }}</td>
                         <td>{{ $item->used_in }}</td>
-                        <td>{{ date('d/m/Y', strtotime($item->updated_at)) }}</td>
-                        <td>{{ $item->last_activity_by }}</td>
                     </tr>
                     @endforeach
 
@@ -90,9 +86,9 @@
     </div>
 
     @section('endBody')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <script src="http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('scss/datatable.css') }}">
+    <script src="{{ asset('js/datatable.js') }}"></script>
 
     <script>
         $(document).ready(function() {

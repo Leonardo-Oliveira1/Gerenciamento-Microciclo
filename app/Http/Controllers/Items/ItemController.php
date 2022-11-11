@@ -86,7 +86,6 @@ class ItemController extends Controller
         $data = $this->getData($request);
 
         $item = new Item;
-        $history = new historyController;
 
         $item->name = $data->item->name;
         $item->category = $data->item->category;

@@ -60,7 +60,6 @@ class Category extends Controller
         $data = $this->getData($request);
 
         $category = new CategoryItem;
-        $history = new historyController;
 
         $category->name = $data->category->name;
         $category->add_by = $data->category->last_activity;

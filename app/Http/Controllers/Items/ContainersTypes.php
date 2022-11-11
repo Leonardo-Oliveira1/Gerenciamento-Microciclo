@@ -60,7 +60,6 @@ class ContainersTypes extends Controller
         $data = $this->getData($request);
 
         $container = new ContainerType;
-        $history = new historyController;
 
         $container->name = $data->container->name;
         $container->add_by = $data->container->last_activity;
