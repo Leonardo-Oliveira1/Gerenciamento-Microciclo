@@ -105,7 +105,7 @@ class ItemController extends Controller
         }
 
         if ($data->item->volume == null) {
-            $item->volume = '0';
+            $item->volume = 0;
         }
 
         if ($data->item->unit_type == null) {
@@ -150,7 +150,7 @@ class ItemController extends Controller
         }
 
         if ($data->item->unit_type == null) {
-            $item->volume_measure = 'Não informado';
+            $item->volume_measure = '';
         }
 
         $item->save();
