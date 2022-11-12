@@ -92,20 +92,25 @@ class ItemController extends Controller
         $item->container_type = $data->item->container_type;
         $item->volume = $data->item->volume;
         $item->volume_measure = $data->item->unit_type;
+        $item->brand = $data->item->brand;
+        $item->used_in = $data->item->used_in;
+        $item->last_activity_by = $data->item->last_activity_by;
 
         if ($data->item->brand == null) {
             $item->brand = 'Não informado';
-        } else {
-            $item->brand = $data->item->brand;
         }
 
         if ($data->item->used_in == null) {
             $item->used_in = 'Não informado';
-        } else {
-            $item->used_in = $data->item->used_in;
         }
 
-        $item->last_activity_by = $data->item->last_activity_by;
+        if ($data->item->volume == null) {
+            $item->brand = 'Não informado';
+        }
+
+        if ($data->item->volume_measure == null) {
+            $item->used_in = 'Não informado';
+        }
 
         if (!Item::where('name', $data->item->name)->get()->isEmpty()) {
             return redirect()->route('items')
@@ -128,20 +133,25 @@ class ItemController extends Controller
         $item->container_type = $data->item->container_type;
         $item->volume = $data->item->volume;
         $item->volume_measure = $data->item->unit_type;
+        $item->brand = $data->item->brand;
+        $item->used_in = $data->item->used_in;
+        $item->last_activity_by = $data->item->last_activity_by;
 
         if ($data->item->brand == null) {
             $item->brand = 'Não informado';
-        } else {
-            $item->brand = $data->item->brand;
         }
 
         if ($data->item->used_in == null) {
             $item->used_in = 'Não informado';
-        } else {
-            $item->used_in = $data->item->used_in;
         }
 
-        $item->last_activity_by = $data->item->last_activity_by;
+        if ($data->item->volume == null) {
+            $item->brand = 'Não informado';
+        }
+
+        if ($data->item->volume_measure == null) {
+            $item->used_in = 'Não informado';
+        }
 
         $item->save();
 

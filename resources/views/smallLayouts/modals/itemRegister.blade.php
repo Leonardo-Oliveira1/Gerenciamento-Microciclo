@@ -47,19 +47,20 @@
                     <div class="row">
 
                         <div class="col mb-4">
-                            <label for="volume" class="form-label">Volume (ou peso) <span style="color: red;">*</span></label>
-                            <input type="number" name="volume" id="volume" class="form-control" required placeholder="0.00" step="any">
+                            <label for="volume" class="form-label">Volume (ou peso)</label>
+                            <input type="number" name="volume" id="volume" class="form-control" placeholder="0.00" step="any">
                         </div>
 
 
                         <div class="col mb-4">
-                            <label for="unit_type" class="form-label">Medida <span style="color: red;">*</span></label>
-                            <select class="form-select" name="unit_type" id="unit_type" required>
+                            <label for="unit_type" class="form-label">Medida</label>
+                            <select class="form-select" name="unit_type" id="unit_type">
                                 <option value="" selected>--</option>
                                 <option value="Kg">Kg</option>
                                 <option value="g">g</option>
                                 <option value="L">L</option>
                                 <option value="ml">ml</option>
+                                <option value="µL">µL</option>
                             </select>
                         </div>
 
