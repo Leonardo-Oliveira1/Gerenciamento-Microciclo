@@ -105,11 +105,11 @@ class ItemController extends Controller
         }
 
         if ($data->item->volume == null) {
-            $item->brand = 'Não informado';
+            $item->volume = 'Não informado';
         }
 
-        if ($data->item->volume_measure == null) {
-            $item->used_in = 'Não informado';
+        if ($data->item->unit_type == null) {
+            $item->volume_measure = 'Não informado';
         }
 
         if (!Item::where('name', $data->item->name)->get()->isEmpty()) {
@@ -146,11 +146,11 @@ class ItemController extends Controller
         }
 
         if ($data->item->volume == null) {
-            $item->brand = 'Não informado';
+            $item->volume = 'Não informado';
         }
 
-        if ($data->item->volume_measure == null) {
-            $item->used_in = 'Não informado';
+        if ($data->item->unit_type == null) {
+            $item->volume_measure = 'Não informado';
         }
 
         $item->save();
