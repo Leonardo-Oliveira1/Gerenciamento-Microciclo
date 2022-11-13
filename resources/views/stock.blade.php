@@ -48,7 +48,6 @@
                         <th>Quant.</th>
                         <th>Próximo a vencer</th>
                         <th>Última modificação</th>
-                        <th>Última atividade por</th>
                     </tr>
                 </thead>
 
@@ -76,7 +75,6 @@
                         <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
                         @endif
                         <td>{{ date('d/m/Y', strtotime($stock['updated_at'])) }}</td>
-                        <td>{{ $stock['last_activity_by'] }}</td>
                     </tr>
                     @endforeach
                     @endempty
@@ -99,7 +97,6 @@
                         <th>Quantidade</th>
                         <th>Validade</th>
                         <th>Data de adição</th>
-                        <th>Adicionado por</th>
                     </tr>
                 </thead>
 
@@ -122,7 +119,6 @@
                         <td style="font-size: 18px"><span class="badge bg-label-danger me-1">{{ $expirated->quantity }}</span></td>
                         <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($expirated->expiration_date)) }}</span></td>
                         <td>{{ date('d/m/Y', strtotime($expirated->created_at)) }}</td>
-                        <td>{{ $expirated->last_activity_by }}</td>
                     </tr>
                     @endforeach
                     @endempty

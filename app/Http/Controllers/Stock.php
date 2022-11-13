@@ -51,7 +51,6 @@ class Stock extends Controller
                 'name' => $this->itemName()[$i]->name,
                 'total_quantity' => $this->totalStock($this->itemName()[$i]->name),
                 'next_expiration_date' => $this->nextExpirationDate($this->itemName()[$i]->name),
-                'last_activity_by' => Auth::user()->name,
                 'updated_at' => $this->lastUpdate($this->itemName()[$i]->name)
             );
         }
