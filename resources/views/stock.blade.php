@@ -82,9 +82,9 @@
     </div>
 
     @section('endBody')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <script src="http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('scss/datatable.css') }}">
+    <script src="{{ asset('js/datatable.js') }}"></script>
 
     <script>
         $(document).ready(function() {
