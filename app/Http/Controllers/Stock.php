@@ -160,7 +160,7 @@ class Stock extends Controller
         }
 
         return redirect()->route('stock', $item->name)
-            ->with('success', 'Baixa de '.$stockOff.' unidades registrada com sucesso!');
+            ->with('success', 'Baixa de '.$stockOff.' unidade(s) registrada com sucesso!');
 
     }
 }
