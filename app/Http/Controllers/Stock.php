@@ -159,7 +159,7 @@ class Stock extends Controller
             ->with('success', 'Baixa registrada com sucesso. As unidades deste item se tornou inferior a zero, por isso, ele não aparecerá mais nesta listagem.');
         }
 
-        return redirect()->route('editStock', $item->name)
+        return redirect()->route('stock', $item->name)
             ->with('success', 'Baixa de '.$stockOff.' unidades registrada com sucesso!');
 
     }
