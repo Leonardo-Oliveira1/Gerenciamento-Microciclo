@@ -32,6 +32,10 @@
                 #itens_filter {
                     padding-bottom: 20px;
                 }
+
+                #itens_paginate, #itens_info{
+                    padding-top: 20px;
+                }
             </style>
 
             <table id="itens" class="table table-bordered table-hover">
