@@ -25,7 +25,7 @@ class Stock extends Controller
             'items' => $item->showItems(),
             'containers' => $containers->showContainers(),
             'categories' => $categories->showCategories(),
-            'stocks' => $this->Item()
+            'stocks' => $this->showItemTotalUnits()
         ]);
     }
 
@@ -43,7 +43,7 @@ class Stock extends Controller
         ]);
     }
 
-    public function Item()
+    public function showItemTotalUnits()
     {
         for ($i = 0; $i < count($this->itemName()); $i++) {
             $item[] = array(
@@ -51,7 +51,7 @@ class Stock extends Controller
                 'total_quantity' => $this->totalStock($this->itemName()[$i]->name),
                 'next_expiration_date' => $this->nextExpirationDate($this->itemName()[$i]->name),
                 'last_activity_by' => Auth::user()->name,
-                'updated_at' => $this->lastUpdate()
+                'updated_at' => $this->lastUpdate($this->itemName()[$i]->name)
             );
         }
 
@@ -95,9 +95,9 @@ class Stock extends Controller
         return $next_expiration_date->expiration_date;
     }
 
-    public function lastUpdate()
+    public function lastUpdate($name)
     {
-        $last_update = ItemStock::orderBy('updated_at', 'ASC')->first();
+        $last_update = ItemStock::orderBy('updated_at', 'ASC')->select()->whereRaw("name = '$name'")->first();
 
         return $last_update->updated_at;
     }
@@ -144,7 +144,6 @@ class Stock extends Controller
     {
         $history = new historyController;
 
-        $data = $this->getData($request);
         $item = ItemStock::find($id);
 
         $stockOff = $request->input('stockOff');

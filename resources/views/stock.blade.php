@@ -9,12 +9,6 @@
 
 @section('content')
 
-<style>
-    body {
-        background-color: #FAFAFA;
-    }
-</style>
-
 <div class="container-xxl flex-grow-1 container-p-y">
     <br>
     <center>
@@ -29,8 +23,15 @@
     <br>
 
     <div class="row">
-        <div class="table-responsive">
+        <div class="table-responsive" style="background-color: #FCFCFC; padding: 20px; border: solid 1px; border-radius: 10px;">
             @include('flash-message')
+
+            <style>
+                #itens_filter {
+                    padding-bottom: 20px;
+                }
+            </style>
+
             <table id="itens" class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -60,7 +61,7 @@
                                 </div>
                             </div>
                         </td>
-                    @endif
+                        @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $stock['name'] }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $stock['total_quantity'] }}</span></td>
                         <td style="font-size: 20px"><span class="badge bg-label-warning me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
