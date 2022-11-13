@@ -25,7 +25,8 @@ class Stock extends Controller
             'items' => $item->showItems(),
             'containers' => $containers->showContainers(),
             'categories' => $categories->showCategories(),
-            'stocks' => $this->showItemTotalUnits()
+            'stocks' => $this->showItemTotalUnits(),
+            'expireds' => $this->allExpiratedItems()
         ]);
     }
 
@@ -95,6 +96,13 @@ class Stock extends Controller
         return $next_expiration_date->expiration_date;
     }
 
+    public function allExpiratedItems()
+    {
+        $allExpirated = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("expiration_date < CURDATE()")->get();
+
+        return $allExpirated;
+    }
+
     public function lastUpdate($name)
     {
         $last_update = ItemStock::orderBy('updated_at', 'ASC')->select()->whereRaw("name = '$name'")->first();
@@ -155,8 +163,8 @@ class Stock extends Controller
 
         if($newQuantity <= 0){
             ItemStock::where('id', $id)->delete();
-            return redirect()->route('editStock', $item->name)
-            ->with('success', 'Baixa registrada com sucesso. As unidades deste item se tornou inferior a zero, por isso, ele não aparecerá mais nesta listagem.');
+            return redirect()->route('stock', $item->name)
+            ->with('success', 'Baixa registrada com sucesso. Como as unidades deste item se tornou inferior a zero, por isso, ele não aparecerá mais nesta listagem.');
         }
 
         return redirect()->route('stock', $item->name)

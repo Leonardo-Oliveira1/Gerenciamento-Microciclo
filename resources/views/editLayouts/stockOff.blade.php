@@ -6,6 +6,7 @@
     <br>
     <center>
         <h1>Registrando baixa ao '{{$item->name}}'</h1>
+        <h3 class="fw-bold p-4">Unidades disponíveis deste item: {{ $item->quantity }}</h3>
     </center>
     <br>
     <br>
@@ -13,8 +14,9 @@
     <div class="row" style="align-items: center; justify-content:center;">
     @include('flash-message')
 
-        <div class="demo-vertical-spacing demo-only-element col-md-8">
-            <form method="POST" action="{{ route('save_stock_off', $item->id) }}" enctype='multipart/form-data'>
+
+    <div class="demo-vertical-spacing demo-only-element col-md-8">
+        <form method="POST" action="{{ route('save_stock_off', $item->id) }}" enctype='multipart/form-data'>
                 @csrf
                 <div class="mb-3">
                     <label for="defaultFormControlInput" class="form-label">Quantidade de itens que tiveram baixas</label>

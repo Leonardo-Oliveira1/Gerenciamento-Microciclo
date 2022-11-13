@@ -26,7 +26,7 @@
         <div class="table-responsive">
         @include('flash-message')
 
-            <!--Admins-->
+            <!--Table-->
             <table class="table">
                 <thead>
                     <tr>
@@ -57,14 +57,18 @@
                     @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
-                        <td style="font-size: 20px;"><span class="badge bg-label-warning me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
+                        @if ($item->expiration_date >= date("Y-m-d"))
+                        <td style="font-size: 20px;"><span class="badge bg-label-dark me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
+                            @else
+                            <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
+                        @endif
                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                         <td>{{ $item->last_activity_by }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <!--Admins/-->
+            <!--Table/-->
         </div>
     </div>
 </div>
