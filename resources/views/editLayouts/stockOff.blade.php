@@ -18,7 +18,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="defaultFormControlInput" class="form-label">Quantidade de itens que tiveram baixas</label>
-                    <input type="number" class="form-control" name="stockOff" id="defaultFormControlInput" value="1" min="0" max="{{$item->quantity}}" aria-describedby="defaultFormControlHelp" />
+                    <input type="number" class="form-control" name="stockOff" id="defaultFormControlInput" value="1" min="1" max="{{$item->quantity}}" aria-describedby="defaultFormControlHelp" />
                 </div>
 
                 <button type="button" onclick="window.history.back()" class="btn btn-label-secondary">Cancelar</button>
