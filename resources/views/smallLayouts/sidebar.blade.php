@@ -95,6 +95,14 @@
             </a>
         </li>-->
 
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Experimentos</span></li>
+        <li class="menu-item">
+            <a href="{{ route('TOG') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <div data-i18n="Basic">Teor de óleos e graxas</div>
+            </a>
+        </li>
+
         @if ( Auth::user()->account_type == "Administrador(a)")
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>
 

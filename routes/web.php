@@ -12,6 +12,7 @@ use App\Http\Controllers\Items\Category;
 use App\Http\Controllers\Items\ContainersTypes;
 use App\Http\Controllers\Items\ItemController;
 use App\Http\Controllers\Stock;
+use App\Http\Controllers\Experiments;
 
 //Authentication Routes
 Route::get('/register', [registerUser::class, 'index'])->name('register');
@@ -31,6 +32,8 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
     Route::get('/categorias', [Category::class, 'index'])->name('categories');
     Route::get('/recipientes', [ContainersTypes::class, 'index'])->name('containers');
     Route::get('/historico', [historyController::class, 'index'])->name('history');
+
+    Route::get('/tog', [Experiments::class, 'indexTOG'])->name('TOG');
 
     /*Route::get('/estimativas', function () {
         return view('reagents_estimated');
