@@ -128,7 +128,6 @@ class ItemController extends Controller
 
         $item = Item::find($id);
 
-        $item->name = $data->item->name;
         $item->category = $data->item->category;
         $item->container_type = $data->item->container_type;
         $item->volume = $data->item->volume;

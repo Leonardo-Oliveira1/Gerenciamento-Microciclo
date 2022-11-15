@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col mb-4">
                             <label for="item_name" class="form-label">Nome do item <span style="color: red;">*</span></label>
-                            <input type="text" id="item_name" name="item_name" class="form-control" required value="{{ $item->name }}" placeholder="Digite o nome do item">
+                            <input type="text" id="item_name" name="item_name" class="form-control" required value="{{ $item->name }}" disabled placeholder="Digite o nome do item">
                         </div>
                         <div class="col mb-4">
                             <label for="used_in" class="form-label">Utilizado no experimento: </label>
@@ -51,19 +51,20 @@
                     <div class="row">
 
                         <div class="col mb-4">
-                            <label for="volume" class="form-label">Volume (ou peso) <span style="color: red;">*</span></label>
-                            <input type="number" name="volume" id="volume" class="form-control" required  value="{{ $item->volume }}" placeholder="0.00" step="any">
+                            <label for="volume" class="form-label">Volume (ou peso)</label>
+                            <input type="number" name="volume" id="volume" class="form-control" value="{{ $item->volume }}" placeholder="0.00" step="any">
                         </div>
 
 
                         <div class="col mb-4">
-                            <label for="unit_type" class="form-label">Medida <span style="color: red;">*</span></label>
-                            <select class="form-select" name="unit_type" id="unit_type" required>
+                            <label for="unit_type" class="form-label">Medida</label>
+                            <select class="form-select" name="unit_type" id="unit_type">
                                 <option value="{{ $item->volume_measure }}" selected>{{ $item->volume_measure }}</option>
                                 <option value="Kg">Kg</option>
                                 <option value="g">g</option>
                                 <option value="L">L</option>
                                 <option value="ml">ml</option>
+                                <option value="µL">µL</option>
                             </select>
                         </div>
 
