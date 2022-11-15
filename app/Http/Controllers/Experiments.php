@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\ItemStock;
+use App\Item;
 
 
 class Experiments extends Controller
@@ -15,14 +16,55 @@ class Experiments extends Controller
             'calculo' => $this->calculo()]);
     }
 
+    public function getItemInfo($name){
+        $item = Item::where('name', "=", $name)->first();
+
+        return $item;
+    }
+
+    public function getItemQuantity($name){
+        $total = ItemStock::where('name', "=", $name)->sum("quantity");
+
+        return $total;
+    }
+
+    public function measurementConverter($measure, $volume, $quantity){
+        if($measure == "Kg"){
+            return ($volume * $quantity) * 1;
+        }elseif ($measure == "g") {
+            return ($volume * $quantity) * 0.1;
+        }
+
+        if ($measure == "L") {
+            return ($volume * $quantity) * 1;
+        }elseif ($measure == "ml") {
+            return ($volume * $quantity) * 0.1;
+        }
+
+        if ($measure == "µL") {
+            return ($volume * $quantity) * 0.000001;
+        }
+
+
+        //bug nos itens que não possuem medidas
+        if ($measure == " ") {
+            return ($volume * $quantity) * 1;
+        }
+    }
+
     public function calculo()
     {
-        $Hexano = 0.8;
-        $Filtro = 14;
+        $agar_volume = $this->getItemInfo("Agar Bacteriológico")->volume;
+        $agar_measure = $this->getItemInfo("Agar Bacteriológico")->volume_measure;
+        $agar_quantity = $this->getItemQuantity("Agar Bacteriológico");
 
-        //se hexano 0.1 e filtro 2 = 1 experimentos
-        //se hexano 0.8 e filtro 4 = 2 experimentos
-        //se hexano 0.8 e filtro 16 = 8 experimentos
+        $filtro_volume = $this->getItemInfo("Filtro")->volume;
+        $filtro_measure = $this->getItemInfo("Filtro")->volume_measure;
+        $filtro_quantity = $this->getItemQuantity("Filtro");
+
+        $Hexano = $this->measurementConverter($agar_measure, $agar_volume, $agar_quantity);
+        $Filtro = $this->measurementConverter($filtro_measure, $filtro_volume, $filtro_quantity);
+
         $min_hexano = $Hexano >= 0.1;
         $min_filtro = $Filtro >= 2;
 
