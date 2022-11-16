@@ -13,7 +13,17 @@ class Experiments extends Controller
     public function indexTOG()
     {
         return view('experiments.TOG', [
-            'calculo' => $this->calculo()]);
+            'TOG' => $this->TOG(),
+            'hexanos' => $this->measurementConverter($this->getItemInfo("Hexano")->volume_measure, $this->getItemInfo("Hexano")->volume, $this->getItemQuantity("Hexano")),
+            'filtros' => $this->measurementConverter($this->getItemInfo("Filtro")->volume_measure, $this->getItemInfo("Filtro")->volume, $this->getItemQuantity("Filtro"))]);
+    }
+
+    public function indexIRAP()
+    {
+        return view('experiments.IRAP', [
+            'IRAP' => $this->IRAP(),
+            'hexanos' => $this->measurementConverter($this->getItemInfo("Hexano")->volume_measure, $this->getItemInfo("Hexano")->volume, $this->getItemQuantity("Hexano")),
+            'filtros' => $this->measurementConverter($this->getItemInfo("Filtro")->volume_measure, $this->getItemInfo("Filtro")->volume, $this->getItemQuantity("Filtro"))]);
     }
 
     public function getItemInfo($name){
@@ -46,23 +56,25 @@ class Experiments extends Controller
         }
 
 
-        //bug nos itens que não possuem medidas
-        if ($measure == " ") {
-            return ($volume * $quantity) * 1;
+        //ITEMS WITHOUT MEASURE
+        if ($measure == "") {
+            return $quantity;
         }
     }
 
-    public function calculo()
+    //EXPERIMENTS CALC
+    public function TOG()
     {
-        $agar_volume = $this->getItemInfo("Agar Bacteriológico")->volume;
-        $agar_measure = $this->getItemInfo("Agar Bacteriológico")->volume_measure;
-        $agar_quantity = $this->getItemQuantity("Agar Bacteriológico");
+        $hexano_volume = $this->getItemInfo("Hexano")->volume;
+        $hexano_measure = $this->getItemInfo("Hexano")->volume_measure;
+        $hexano_quantity = $this->getItemQuantity("Hexano");
 
         $filtro_volume = $this->getItemInfo("Filtro")->volume;
         $filtro_measure = $this->getItemInfo("Filtro")->volume_measure;
         $filtro_quantity = $this->getItemQuantity("Filtro");
 
-        $Hexano = $this->measurementConverter($agar_measure, $agar_volume, $agar_quantity);
+        //dd($filtro_measure, $filtro_volume, $filtro_quantity);
+        $Hexano = $this->measurementConverter($hexano_measure, $hexano_volume, $hexano_quantity);
         $Filtro = $this->measurementConverter($filtro_measure, $filtro_volume, $filtro_quantity);
 
         $min_hexano = $Hexano >= 0.1;
@@ -73,15 +85,101 @@ class Experiments extends Controller
             $possible_experiments_with_hexano = $Hexano / 0.1;
             $possible_experiments_with_filtro = $Filtro / 2;
 
-            if ($possible_experiments_with_hexano > $possible_experiments_with_filtro){
-                $max_experiments = round($possible_experiments_with_filtro, 0, PHP_ROUND_HALF_DOWN);
-            }else{
-                $max_experiments = round($possible_experiments_with_hexano, 0, PHP_ROUND_HALF_DOWN);
-            }
+            $max_experiments = round(min($possible_experiments_with_filtro, $possible_experiments_with_hexano), 0, PHP_ROUND_HALF_DOWN);
 
-            return "É possível realizar este experimento $max_experiments vezes com os recursos disponíveis.";
-        } else {
-            return "Não há recursos suficientes para realizar este experimento.";
+            return $max_experiments;
+        }
+    }
+
+    public function IRAP()
+    {
+        $Sacarose_volume = $this->getItemInfo("Sacarose")->volume;
+        $Sacarose_measure = $this->getItemInfo("Sacarose")->volume_measure;
+        $Sacarose_quantity = $this->getItemQuantity("Sacarose");
+
+        $Ureia_volume = $this->getItemInfo("Ureia")->volume;
+        $Ureia_measure = $this->getItemInfo("Ureia")->volume_measure;
+        $Ureia_quantity = $this->getItemQuantity("Ureia");
+
+        $Extrato_de_levedura1kg_volume = $this->getItemInfo("Extrato de levedura 1kg")->volume;
+        $Extrato_de_levedura1kg_measure = $this->getItemInfo("Extrato de levedura 1kg")->volume_measure;
+        $Extrato_de_levedura1kg_quantity = $this->getItemQuantity("Extrato de levedura 1kg");
+
+        $Extrato_de_levedura500g_volume = $this->getItemInfo("Extrato de levedura 500g")->volume;
+        $Extrato_de_levedura500g_measure = $this->getItemInfo("Extrato de levedura 500g")->volume_measure;
+        $Extrato_de_levedura500g_quantity = $this->getItemQuantity("Extrato de levedura 500g");
+
+        $KH2PO4_volume = $this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume;
+        $KH2PO4_measure = $this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume_measure;
+        $KH2PO4_quantity = $this->getItemQuantity("Fosfato de potássio monobásico (KH2PO4)");
+
+        $K2HPO41kg_volume = $this->getItemInfo("Fosfato de potássio Bibásico Anidro (K2HPO4) 1kg")->volume;
+        $K2HPO41kg_measure = $this->getItemInfo("Fosfato de potássio Bibásico Anidro (K2HPO4) 1kg")->volume_measure;
+        $K2HPO41kg_quantity = $this->getItemQuantity("Fosfato de potássio Bibásico Anidro (K2HPO4) 1kg");
+
+        $K2HPO4500g_volume = $this->getItemInfo("Fosfato de potássio Bibásico Anidro (K2HPO4) 500g")->volume;
+        $K2HPO4500g_measure = $this->getItemInfo("Fosfato de potássio Bibásico Anidro (K2HPO4) 500g")->volume_measure;
+        $K2HPO4500g_quantity = $this->getItemQuantity("Fosfato de potássio Bibásico Anidro (K2HPO4) 500g");
+
+        $MgSO47H2O_volume = $this->getItemInfo("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")->volume;
+        $MgSO47H2O_measure = $this->getItemInfo("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")->volume_measure;
+        $MgSO47H2O_quantity = $this->getItemQuantity("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)");
+
+        //PAREI NO FeSO4.7H2O
+        //dd($filtro_measure, $filtro_volume, $filtro_quantity);
+
+        $Sacarose = 1;
+        $Ureia = 1;
+        $Extrato_de_levedura = 1;
+        $KH2PO4 = 1;
+        $K2HPO4 = 1;
+        $MgSO47H2O = 1;
+        $FeSO47H2O = 1;
+        $CuSO45H2O = 1;
+        $MnSO4H2O = 1;
+        $ZnSO47H2O = 1;
+
+
+        $min_sacarose = $Sacarose >= 0.05;
+        $min_ureia = $Ureia >= 0.002;
+        $min_extrato_de_levedura = $Extrato_de_levedura >= 0.005;
+        $min_KH2PO4 = $KH2PO4 >= 0.001;
+        $min_K2HPO4 = $K2HPO4 >= 0.008;
+        $min_MgSO47H2O = $MgSO47H2O >= 0.001;
+        $min_FeSO47H2O = $FeSO47H2O >= 0.0001;
+        $min_CuSO45H2O = $CuSO45H2O >= 0.0000088;
+        $min_MnSO4H2O = $MnSO4H2O >= 0.0000076;
+        $min_ZnSO47H2O = $ZnSO47H2O >= 0.00001;
+
+        if ($min_sacarose && $min_ureia && $min_extrato_de_levedura
+        && $min_KH2PO4 && $min_K2HPO4 && $min_MgSO47H2O && $min_FeSO47H2O
+        && $min_CuSO45H2O && $min_MnSO4H2O && $min_ZnSO47H2O) {
+
+            $possible_experiments_with_sacarose = $Sacarose / 0.05;
+            $possible_experiments_with_ureia = $Ureia / 0.002;
+            $possible_experiments_with_extrato_de_levedura = $Extrato_de_levedura / 0.005;
+            $possible_experiments_with_KH2PO4 = $KH2PO4 / 0.001;
+            $possible_experiments_with_K2HPO4 = $K2HPO4 / 0.008;
+            $possible_experiments_with_MgSO47H2O = $MgSO47H2O / 0.001;
+            $possible_experiments_with_FeSO47H2O = $FeSO47H2O / 0.0001;
+            $possible_experiments_with_CuSO45H2O = $CuSO45H2O / 0.0000088;
+            $possible_experiments_with_MnSO4H2O = $MnSO4H2O / 0.0000076;
+            $possible_experiments_with_ZnSO47H2O = $ZnSO47H2O / 0.00001;
+
+
+            $max_experiments = round(min($possible_experiments_with_sacarose,
+            $possible_experiments_with_ureia,
+            $possible_experiments_with_extrato_de_levedura,
+            $possible_experiments_with_KH2PO4, $possible_experiments_with_K2HPO4,
+            $possible_experiments_with_MgSO47H2O,
+            $possible_experiments_with_FeSO47H2O,
+            $possible_experiments_with_CuSO45H2O,
+            $possible_experiments_with_MnSO4H2O,
+            $possible_experiments_with_ZnSO47H2O), 0, PHP_ROUND_HALF_DOWN);
+
+
+            return $max_experiments;
+
         }
     }
 }

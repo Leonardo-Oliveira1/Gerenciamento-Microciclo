@@ -34,6 +34,7 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
     Route::get('/historico', [historyController::class, 'index'])->name('history');
 
     Route::get('/tog', [Experiments::class, 'indexTOG'])->name('TOG');
+    Route::get('/irap', [Experiments::class, 'indexIRAP'])->name('IRAP');
 
     /*Route::get('/estimativas', function () {
         return view('reagents_estimated');

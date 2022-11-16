@@ -103,6 +103,13 @@
             </a>
         </li>
 
+        <li class="menu-item">
+            <a href="{{ route('IRAP') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <div data-i18n="Basic">Meio de cultura (IRAP)</div>
+            </a>
+        </li>
+
         @if ( Auth::user()->account_type == "Administrador(a)")
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração do sistema</span></li>
 
