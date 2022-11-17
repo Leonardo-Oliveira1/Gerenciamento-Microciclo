@@ -163,7 +163,7 @@ class Stock extends Controller
         if($newQuantity <= 0){
             ItemStock::where('id', $id)->delete();
             return redirect()->route('stock', $item->name)
-            ->with('success', 'Baixa registrada com sucesso. Como as unidades deste item se tornou inferior a zero, por isso, ele não aparecerá mais nesta listagem.');
+            ->with('success', 'Baixa registrada com sucesso. Como as unidades deste item se tornou inferior a zero, ele não aparecerá mais nesta listagem.');
         }
 
         return redirect()->route('stock', $item->name)

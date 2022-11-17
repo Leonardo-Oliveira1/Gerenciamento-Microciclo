@@ -125,20 +125,34 @@ class Experiments extends Controller
         $MgSO47H2O_measure = $this->getItemInfo("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")->volume_measure;
         $MgSO47H2O_quantity = $this->getItemQuantity("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)");
 
-        //PAREI NO FeSO4.7H2O
+        $FeSO47H2O_volume = $this->getItemInfo("Sulfato de Ferro II (OSO - FeSO4.7H2O)")->volume;
+        $FeSO47H2O_measure = $this->getItemInfo("Sulfato de Ferro II (OSO - FeSO4.7H2O)")->volume_measure;
+        $FeSO47H2O_quantity = $this->getItemQuantity("Sulfato de Ferro II (OSO - FeSO4.7H2O)");
+
+        $CuSO45H2O_volume = $this->getItemInfo("Sulfato de Cobre II (ICO - CuSO4.5H2O)")->volume;
+        $CuSO45H2O_measure = $this->getItemInfo("Sulfato de Cobre II (ICO - CuSO4.5H2O)")->volume_measure;
+        $CuSO45H2O_quantity = $this->getItemQuantity("Sulfato de Cobre II (ICO - CuSO4.5H2O)");
+
+        $MnSO4H2O_volume = $this->getItemInfo("Sulfato de Manganês II (OSO - MnSO4.H2O)")->volume;
+        $MnSO4H2O_measure = $this->getItemInfo("Sulfato de Manganês II (OSO - MnSO4.H2O)")->volume_measure;
+        $MnSO4H2O_quantity = $this->getItemQuantity("Sulfato de Manganês II (OSO - MnSO4.H2O)");
+
+        $ZnSO47H2O_volume = $this->getItemInfo("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)")->volume;
+        $ZnSO47H2O_measure = $this->getItemInfo("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)")->volume_measure;
+        $ZnSO47H2O_quantity = $this->getItemQuantity("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)");
+
         //dd($filtro_measure, $filtro_volume, $filtro_quantity);
 
-        $Sacarose = 1;
-        $Ureia = 1;
-        $Extrato_de_levedura = 1;
-        $KH2PO4 = 1;
-        $K2HPO4 = 1;
-        $MgSO47H2O = 1;
-        $FeSO47H2O = 1;
-        $CuSO45H2O = 1;
-        $MnSO4H2O = 1;
-        $ZnSO47H2O = 1;
-
+        $Sacarose = $this->measurementConverter($Sacarose_measure, $Sacarose_volume, $Sacarose_quantity);
+        $Ureia = $this->measurementConverter($Ureia_measure, $Ureia_volume, $Ureia_quantity);
+        $Extrato_de_levedura = ($this->measurementConverter($Extrato_de_levedura1kg_measure, $Extrato_de_levedura1kg_volume, $Extrato_de_levedura1kg_quantity)) + ($this->measurementConverter($Extrato_de_levedura500g_measure, $Extrato_de_levedura500g_volume, $Extrato_de_levedura500g_quantity));
+        $KH2PO4 = $this->measurementConverter($KH2PO4_measure, $KH2PO4_volume, $KH2PO4_quantity);
+        $K2HPO4 = ($this->measurementConverter($K2HPO41kg_measure, $K2HPO41kg_volume, $K2HPO41kg_quantity)) + ($this->measurementConverter($K2HPO4500g_measure, $K2HPO4500g_volume, $K2HPO4500g_quantity));
+        $MgSO47H2O = $this->measurementConverter($MgSO47H2O_measure, $MgSO47H2O_volume, $MgSO47H2O_quantity);;
+        $FeSO47H2O = $this->measurementConverter($FeSO47H2O_measure, $FeSO47H2O_volume, $FeSO47H2O_quantity);;
+        $CuSO45H2O = $this->measurementConverter($CuSO45H2O_measure, $CuSO45H2O_volume, $CuSO45H2O_quantity);;
+        $MnSO4H2O = $this->measurementConverter($MnSO4H2O_measure, $MnSO4H2O_volume, $MnSO4H2O_quantity);;
+        $ZnSO47H2O = $this->measurementConverter($ZnSO47H2O_measure, $ZnSO47H2O_volume, $ZnSO47H2O_quantity);;
 
         $min_sacarose = $Sacarose >= 0.05;
         $min_ureia = $Ureia >= 0.002;
