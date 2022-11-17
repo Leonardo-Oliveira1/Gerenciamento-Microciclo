@@ -51,13 +51,13 @@ class Experiments extends Controller
         if($measure == "Kg"){
             return ($volume * $quantity) * 1;
         }elseif ($measure == "g") {
-            return ($volume * $quantity) * 0.1;
+            return ($volume * $quantity) * 0.001;
         }
 
         if ($measure == "L") {
             return ($volume * $quantity) * 1;
         }elseif ($measure == "ml") {
-            return ($volume * $quantity) * 0.1;
+            return ($volume * $quantity) * 0.001;
         }
 
         if ($measure == "µL") {
