@@ -6,7 +6,7 @@
     <br>
     <center>
         <h1>Registrando baixa ao '{{$item->name}}'</h1>
-        <h3 class="fw-bold p-4">Unidades disponíveis deste item: {{ $item->quantity }}</h3>
+        <h3 class="fw-bold p-4">Unidades disponíveis deste item específico: {{ $item->quantity }}</h3>
     </center>
     <br>
     <br>

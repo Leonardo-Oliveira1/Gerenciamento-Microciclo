@@ -17,7 +17,7 @@
 
         <div class="row">
             @if($TOG)
-                <h4 class="p-4" style="margin-top: -30px;">É possível realizar este experimento <b><span style="color: #30907B">{{ $TOG }} vezes</span></b> com os recursos disponíveis.</h4>
+                <h4 class="p-4" style="margin-top: -30px;">É possível produzir <b><span style="color: #30907B">{{ $TOG }} amostras</span></b> com os recursos disponíveis.</h4>
                 @else
                 <h4 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h4>
             @endif
