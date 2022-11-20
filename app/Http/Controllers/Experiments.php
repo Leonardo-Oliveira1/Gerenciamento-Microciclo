@@ -46,6 +46,13 @@ class Experiments extends Controller
         ]);
     }
 
+    public function indexSACAROSE2()
+    {
+        return view('experiments.Sacarose2', [
+            'Sacarose2' => $this->sacarose(),
+            'Sacarose' => $this->measurementConverter($this->getItemInfo("Sacarose")->volume_measure, $this->getItemInfo("Sacarose")->volume, $this->getItemQuantity("Sacarose"))]);
+    }
+
     public function getItemInfo($name){
         $item = Item::where('name', "=", $name)->first();
 
@@ -259,6 +266,27 @@ class Experiments extends Controller
             $max_experiments = round(min($possible_experiments_with_NaCl, $possible_experiments_with_KCl, $possible_experiments_with_Na2HPO4, $possible_experiments_with_KH2PO4), 0, PHP_ROUND_HALF_DOWN);
 
             return $max_experiments;
+        }
+    }
+
+    public function sacarose()
+    {
+        $Sacarose_volume = $this->getItemInfo("Sacarose")->volume;
+        $Sacarose_measure = $this->getItemInfo("Sacarose")->volume_measure;
+        $Sacarose_quantity = $this->getItemQuantity("Sacarose");
+
+        $Sacarose = $this->measurementConverter($Sacarose_measure, $Sacarose_volume, $Sacarose_quantity);
+
+        $min_sacarose = $Sacarose >= 0.002;
+
+        if ($min_sacarose) {
+
+            $possible_experiments_with_sacarose = $Sacarose / 0.002;
+
+            $max_experiments = round($possible_experiments_with_sacarose, 0, PHP_ROUND_HALF_DOWN);
+
+            return $max_experiments;
+
         }
     }
 }

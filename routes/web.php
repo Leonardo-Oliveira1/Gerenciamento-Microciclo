@@ -36,6 +36,7 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
     Route::get('/tog', [Experiments::class, 'indexTOG'])->name('TOG');
     Route::get('/irap', [Experiments::class, 'indexIRAP'])->name('IRAP');
     Route::get('/pbs', [Experiments::class, 'indexPBS'])->name('PBS');
+    Route::get('/sacarose', [Experiments::class, 'indexSacarose2'])->name('Sacarose2%');
 
 
     /*Route::get('/estimativas', function () {

@@ -98,22 +98,29 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Experimentos</span></li>
         <li class="menu-item">
             <a href="{{ route('TOG') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <i class="menu-icon tf-icons bx bx-test-tube"></i>
                 <div data-i18n="Basic">Teor de óleos e graxas</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="{{ route('IRAP') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <i class="menu-icon tf-icons bx bx-test-tube"></i>
                 <div data-i18n="Basic">Meio de cultura (IRAP)</div>
             </a>
         </li>
 
         <li class="menu-item">
             <a href="{{ route('PBS') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-stopwatch"></i>
+                <i class="menu-icon tf-icons bx bx-test-tube"></i>
                 <div data-i18n="Basic">Lavagem com PBS</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{ route('Sacarose2%') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-test-tube"></i>
+                <div data-i18n="Basic">Crioproteção (Sacarose 2%)</div>
             </a>
         </li>
 
