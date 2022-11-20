@@ -35,6 +35,8 @@ Route::middleware(['checksession', 'check.user.account.type'])->group(function (
 
     Route::get('/tog', [Experiments::class, 'indexTOG'])->name('TOG');
     Route::get('/irap', [Experiments::class, 'indexIRAP'])->name('IRAP');
+    Route::get('/pbs', [Experiments::class, 'indexPBS'])->name('PBS');
+
 
     /*Route::get('/estimativas', function () {
         return view('reagents_estimated');

@@ -35,6 +35,17 @@ class Experiments extends Controller
         ]);
     }
 
+    public function indexPBS()
+    {
+        return view('experiments.PBS', [
+            'PBS' => $this->PBS(),
+            'NaCl' => $this->measurementConverter($this->getItemInfo("Cloreto de Sódio")->volume_measure, $this->getItemInfo("Cloreto de Sódio")->volume, $this->getItemQuantity("Cloreto de Sódio")),
+            'KCl' => $this->measurementConverter($this->getItemInfo("Cloreto de Potássio (Tubo)")->volume_measure, $this->getItemInfo("Cloreto de Potássio (Tubo)")->volume, $this->getItemQuantity("Cloreto de Potássio (Tubo)")) + $this->measurementConverter($this->getItemInfo("Cloreto de Potássio (Pote)")->volume_measure, $this->getItemInfo("Cloreto de Potássio (Pote)")->volume, $this->getItemQuantity("Cloreto de Potássio (Pote)")),
+            'Na2HPO4' => $this->measurementConverter($this->getItemInfo("Fosfato de Sódio Dibásico")->volume_measure, $this->getItemInfo("Fosfato de Sódio Dibásico")->volume, $this->getItemQuantity("Fosfato de Sódio Dibásico")),
+            'KH2PO4' => $this->measurementConverter($this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume_measure, $this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume, $this->getItemQuantity("Fosfato de potássio monobásico (KH2PO4)")),
+        ]);
+    }
+
     public function getItemInfo($name){
         $item = Item::where('name', "=", $name)->first();
 
@@ -203,6 +214,51 @@ class Experiments extends Controller
 
             return $max_experiments;
 
+        }
+    }
+
+    public function PBS()
+    {
+        $NaCl_volume = $this->getItemInfo("Cloreto de Sódio")->volume;
+        $NaCl_measure = $this->getItemInfo("Cloreto de Sódio")->volume_measure;
+        $NaCl_quantity = $this->getItemQuantity("Cloreto de Sódio");
+
+        $KCl_tubo_volume = $this->getItemInfo("Cloreto de Potássio (Tubo)")->volume;
+        $KCl_tubo_measure = $this->getItemInfo("Cloreto de Potássio (Tubo)")->volume_measure;
+        $KCl_tubo_quantity = $this->getItemQuantity("Cloreto de Potássio (Tubo)");
+
+        $KCl_pote_volume = $this->getItemInfo("Cloreto de Potássio (Pote)")->volume;
+        $KCl_pote_measure = $this->getItemInfo("Cloreto de Potássio (Pote)")->volume_measure;
+        $KCl_pote_quantity = $this->getItemQuantity("Cloreto de Potássio (Pote)");
+
+        $Na2HPO4_volume = $this->getItemInfo("Fosfato de Sódio Dibásico")->volume;
+        $Na2HPO4_measure = $this->getItemInfo("Fosfato de Sódio Dibásico")->volume_measure;
+        $Na2HPO4_quantity = $this->getItemQuantity("Fosfato de Sódio Dibásico");
+
+        $KH2PO4_volume = $this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume;
+        $KH2PO4_measure = $this->getItemInfo("Fosfato de potássio monobásico (KH2PO4)")->volume_measure;
+        $KH2PO4_quantity = $this->getItemQuantity("Fosfato de potássio monobásico (KH2PO4)");
+
+        $NaCl = $this->measurementConverter($NaCl_measure, $NaCl_volume, $NaCl_quantity);
+        $KCl = ($this->measurementConverter($KCl_tubo_measure, $KCl_tubo_volume, $KCl_tubo_quantity)) + ($this->measurementConverter($KCl_pote_measure, $KCl_pote_volume, $KCl_pote_quantity));
+        $Na2HPO4 = $this->measurementConverter($Na2HPO4_measure, $Na2HPO4_volume, $Na2HPO4_quantity);
+        $KH2PO4 = $this->measurementConverter($KH2PO4_measure, $KH2PO4_volume, $KH2PO4_quantity);
+
+        $min_NaCl = $NaCl >= 0.008;
+        $min_KCl = $KCl >= 0.0002;
+        $min_Na2HPO4 = $Na2HPO4 >= 0.0014;
+        $min_KH2PO4 = $KH2PO4 >= 0.002;
+
+        if ($min_NaCl && $min_KCl && $min_Na2HPO4 && $min_KH2PO4) {
+
+            $possible_experiments_with_NaCl = $min_NaCl / 0.008;
+            $possible_experiments_with_KCl = $min_KCl / 0.0002;
+            $possible_experiments_with_Na2HPO4 = $min_Na2HPO4 / 0.0014;
+            $possible_experiments_with_KH2PO4 = $KH2PO4 / 0.002;
+
+            $max_experiments = round(min($possible_experiments_with_NaCl, $possible_experiments_with_KCl, $possible_experiments_with_Na2HPO4, $possible_experiments_with_KH2PO4), 0, PHP_ROUND_HALF_DOWN);
+
+            return $max_experiments;
         }
     }
 }
