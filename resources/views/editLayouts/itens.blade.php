@@ -12,7 +12,10 @@
 
     <div class="row" style="align-items: center; justify-content:center;">
         <div class="demo-vertical-spacing demo-only-element col-md-8">
-            <form method="POST" action="{{ route('saveItem', $item->id) }}" enctype='multipart/form-data'>
+            <form onsubmit="loading('main_container')" method="POST" action="{{ route('saveItem', $item->id) }}" enctype='multipart/form-data'>
+                <div id="loading" style="display: none; z-index: 10; position: absolute; left: 653px; top: 262px;">
+                    <img src="{{ asset('assets/img/loading.gif') }}" width="50" style="opacity: 1.0; filter: contrast(900%);" alt="">
+                </div>
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -71,7 +74,7 @@
                     </div>
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="brand_name" class="form-label" >Marca do produto</label>
+                            <label for="brand_name" class="form-label">Marca do produto</label>
                             <input type="text" name="brand_name" id="brand_name" class="form-control" value="{{ $item->brand }}" placeholder="Digite o nome da marca">
                         </div>
                     </div>

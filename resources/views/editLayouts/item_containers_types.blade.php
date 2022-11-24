@@ -12,7 +12,10 @@
 
     <div class="row" style="align-items: center; justify-content:center;">
         <div class="demo-vertical-spacing demo-only-element col-md-8">
-            <form method="POST" action="{{ route('saveContainerTypeSave', $container->id) }}" enctype='multipart/form-data'>
+            <form onsubmit="loading('main_container')" method="POST" action="{{ route('saveContainerTypeSave', $container->id) }}" enctype='multipart/form-data'>
+                <div id="loading" style="display: none; z-index: 10; position: absolute; left: 653px; top: 262px;">
+                    <img src="{{ asset('assets/img/loading.gif') }}" width="50" style="opacity: 1.0; filter: contrast(900%);" alt="">
+                </div>
                 @csrf
                 <div class="mb-3">
                     <label for="defaultFormControlInput" class="form-label">Nome</label>

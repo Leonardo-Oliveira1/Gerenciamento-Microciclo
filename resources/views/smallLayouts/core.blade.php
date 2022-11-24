@@ -43,7 +43,7 @@
 
 </head>
 
-<body>
+<body id="main_container">
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
