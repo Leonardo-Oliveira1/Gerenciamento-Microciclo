@@ -70,7 +70,11 @@
                         @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $stock['name'] }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $stock['total_quantity'] }}</span></td>
+                        @if ($stock['volume'] == 0.00)
+                        <td style="font-size: 16px"><span>Unidade</span></td>
+                        @else
                         <td style="font-size: 16px"><span>{{ $stock['volume'] }}{{ $stock['measure'] }}</span></td>
+                        @endif
                         @if ($stock['next_expiration_date'] >= date("Y-m-d"))
                         <td style="font-size: 20px;"><span class="badge bg-label-dark me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
                         @else

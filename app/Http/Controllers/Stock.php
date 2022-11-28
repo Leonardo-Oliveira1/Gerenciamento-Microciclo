@@ -162,7 +162,6 @@ class Stock extends Controller
         $history = new historyController;
 
         $stock->name = $this->selectItemName($data->item->item_id)->name;
-        $stock->item_id = $data->item->item_id;
         $stock->quantity = $data->item->quantity;
         $stock->expiration_date = $data->item->expiration_date;
         $stock->last_activity_by = $data->item->last_activity_by;
