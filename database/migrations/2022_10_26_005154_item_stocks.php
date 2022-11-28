@@ -15,7 +15,7 @@ class ItemStocks extends Migration
     {
         Schema::create('item_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')->constrained('items')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('item_id')->nullable()->constrained('items')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->integer('quantity');
             $table->date('expiration_date');
