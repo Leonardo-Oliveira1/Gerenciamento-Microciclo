@@ -18,10 +18,10 @@ class CreateItemsTable extends Migration
             $table->string('name')->unique();
             $table->string('category');
             $table->string('container_type');
-            $table->decimal('volume');
-            $table->string('volume_measure');
-            $table->string('brand');
-            $table->string('used_in');
+            $table->decimal('volume')->nullable();
+            $table->string('volume_measure')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('used_in')->nullable();
             $table->string('last_activity_by');
             $table->timestamps();
         });

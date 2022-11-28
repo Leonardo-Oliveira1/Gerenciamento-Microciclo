@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\ItemStock;
+use App\Item;
 
 use App\Http\Controllers\Items\Category;
 use App\Http\Controllers\Items\ContainersTypes;
@@ -49,6 +50,8 @@ class Stock extends Controller
         for ($i = 0; $i < count($this->itemName()); $i++) {
             $item[] = array(
                 'name' => $this->itemName()[$i]->name,
+                'volume' => $this->selectItemStatsByName($this->itemName()[$i]->name)[0]->volume,
+                'measure' => $this->selectItemStatsByName($this->itemName()[$i]->name)[0]->volume_measure,
                 'total_quantity' => $this->totalStock($this->itemName()[$i]->name),
                 'next_expiration_date' => $this->nextExpirationDate($this->itemName()[$i]->name),
                 'updated_at' => $this->lastUpdate($this->itemName()[$i]->name)
@@ -74,9 +77,22 @@ class Stock extends Controller
         return $stocks;
     }
 
+    public function selectItemStatsByName($name)
+    {
+        $stocks = Item::select()->whereRaw("name = '$name'")->get();
+
+        return $stocks;
+    }
+
     public function selectItemById($id)
     {
         $item = ItemStock::where('id', "=", $id)->first();
+
+        return $item;
+    }
+
+    public function selectItemName($id){
+        $item = Item::where('id', "=", $id)->first();
 
         return $item;
     }
@@ -92,7 +108,12 @@ class Stock extends Controller
     {
         $next_expiration_date = ItemStock::orderBy('expiration_date', 'ASC')->select()->whereRaw("name = '$name' && expiration_date >= CURDATE()")->first();
 
+        if($next_expiration_date == null){
+            return false;
+        }
+
         return $next_expiration_date->expiration_date;
+
     }
 
     public function allExpiratedItems()
@@ -106,20 +127,24 @@ class Stock extends Controller
     {
         $last_update = ItemStock::orderBy('updated_at', 'ASC')->select()->whereRaw("name = '$name'")->first();
 
+        if($last_update == null){
+            return false;
+        }
+
         return $last_update->updated_at;
     }
 
 
     public function getData(Request $request)
     {
-        $name = $request->input('item_name');
+        $id = $request->input('item_id');
         $expiration_date = $request->input('expiration_date');
         $quantity = $request->input('quantity');
         $last_activity_by = Auth::user()->name;
 
         $data = (object) array(
             'item' => (object) array(
-                'name' => $name,
+                'item_id' => $id,
                 'expiration_date' => $expiration_date,
                 'quantity' => $quantity,
                 'last_activity_by' => $last_activity_by
@@ -136,13 +161,14 @@ class Stock extends Controller
         $stock = new ItemStock;
         $history = new historyController;
 
-        $stock->name = $data->item->name;
+        $stock->name = $this->selectItemName($data->item->item_id)->name;
+        $stock->item_id = $data->item->item_id;
         $stock->quantity = $data->item->quantity;
         $stock->expiration_date = $data->item->expiration_date;
         $stock->last_activity_by = $data->item->last_activity_by;
 
         $stock->save();
-        $history->StockHistory(Auth::user()->name, $stock->quantity, $stock->name, "adicionou");
+        $history->StockHistory(Auth::user()->name, $stock->quantity, $this->selectItemName($data->item->item_id)->name, "adicionou");
 
         return redirect('/');
     }

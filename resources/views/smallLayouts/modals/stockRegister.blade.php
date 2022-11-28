@@ -16,11 +16,11 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col mb-4">
-                            <label for="item_name" class="form-label">Nome do item <span style="color: red;">*</span></label>
-                            <select class="form-select" name="item_name" id="item_name" required>
+                            <label for="item_id" class="form-label">Nome do item <span style="color: red;">*</span></label>
+                            <select class="form-select" name="item_id" id="item_id" required>
                                 <option value="" selected>--</option>
                                 @foreach($items as $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>
