@@ -142,6 +142,8 @@
     <link rel="stylesheet" href="{{ asset('scss/datatable.css') }}">
     <script src="{{ asset('js/datatable.js') }}"></script>
 
+    <script src="{{ asset('js/accent-neutralise.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#itens').DataTable({
