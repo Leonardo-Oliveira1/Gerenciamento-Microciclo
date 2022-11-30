@@ -38,6 +38,34 @@
                             <input type="number" name="quantity" id="quantity" class="form-control" min="0" required placeholder="0">
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col mb-4">
+                            <label for="lote" class="col-md-2 col-form-label">lote<span style="color: red;"></span></label>
+                            <div class="col-md-11">
+                                <input class="form-control" name="lote" type="text" placeholder="L000000" required id="lote" />
+                            </div>
+                        </div>
+                        <div class="col mb-4" style="margin-top: 5px;">
+                            <label class="form-label">preço <span style="color: red;"></span></label>
+                            <input type="text" class="form-control" data-affixes-stay="true" data-prefix="R$ " data-thousands="," data-decimal="." id="preco" value="R$ 0.00" required><br>
+		                    <script type="text/javascript">$("#preco").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});</script>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col mb-4" style="margin-top: 5px;">
+                            <label for="fabricante" class="form-label">fabricante <span style="color: red;"></span></label>
+                            <input type="text" name="fabricante" id="fabricante" class="form-control" required placeholder="">
+                        </div>
+                        <div class="col mb-4">
+                            <label for="fornecedor" class="col-md-2 col-form-label">fornecedor<span style="color: red;"></span></label>
+                            <div class="col-md-11">
+                                <input class="form-control" name="fornecedor" type="text" required id="fornecedor" />
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="modal-footer">
