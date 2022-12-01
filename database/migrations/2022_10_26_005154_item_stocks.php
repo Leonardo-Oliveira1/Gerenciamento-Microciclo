@@ -19,6 +19,10 @@ class ItemStocks extends Migration
             $table->string('name')->nullable();
             $table->integer('quantity');
             $table->date('expiration_date');
+            $table->string('price')->nullable();
+            $table->string('batch')->nullable();
+            $table->string('manufacturer')->nullable();
+            $table->string('provider')->nullable();
             $table->string('last_activity_by');
             $table->timestamps();
         });

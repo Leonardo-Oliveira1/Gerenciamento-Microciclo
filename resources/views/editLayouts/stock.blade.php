@@ -33,11 +33,14 @@
                     @if ( Auth::user()->account_type == "Administrador(a)")
                         <th>Ações</th>
                         @endif
-                        <th>Nome do item</th>
-                        <th>Quantidade</th>
+                        <th>Nome</th>
+                        <th>Quant.</th>
                         <th>Validade</th>
+                        <th>Lote</th>
+                        <th>Fabricante</th>
+                        <th>Fornecedor</th>
+                        <th>Preço</th>
                         <th>Data de adição</th>
-                        <th>Adicionado por</th>
                     </tr>
                 </thead>
 
@@ -62,8 +65,32 @@
                             @else
                             <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
                         @endif
+
+                        @if ($item->batch != null)
+                        <td style="font-size: 16px">{{$item->batch}}</td>
+                            @else
+                        <td style="font-size: 16px">N/D</td>
+                        @endif
+
+                        @if ($item->manufacturer != null)
+                        <td style="font-size: 16px">{{$item->manufacturer}}</td>
+                            @else
+                        <td style="font-size: 16px">N/D</td>
+                        @endif
+
+                        @if ($item->provider != null)
+                        <td style="font-size: 16px">{{$item->provider}}</td>
+                            @else
+                        <td style="font-size: 16px">N/D</td>
+                        @endif
+
+                        @if ($item->price != null)
+                        <td style="font-size: 16px">R$ {{$item->price}}</td>
+                            @else
+                        <td style="font-size: 16px">N/D</td>
+                        @endif
+
                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                        <td>{{ $item->last_activity_by }}</td>
                     </tr>
                     @endforeach
                 </tbody>

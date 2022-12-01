@@ -138,13 +138,24 @@ class Stock extends Controller
     public function getData(Request $request)
     {
         $id = $request->input('item_id');
+        $quantity = $request->input('quantity');
+        $batch = $request->input('lote');
+        $manufacturer = $request->input('fabricante');
+        $fornecedor = $request->input('fornecedor');
         $expiration_date = $request->input('expiration_date');
         $quantity = $request->input('quantity');
         $last_activity_by = Auth::user()->name;
 
+        $remove_comma = str_replace(",", "", $request->input('preco'));
+        $price = str_replace("R$ ", "", $remove_comma);
+
         $data = (object) array(
             'item' => (object) array(
                 'item_id' => $id,
+                'batch' => $batch,
+                'price' => $price / 100,
+                'manufacturer' => $manufacturer,
+                'provider' => $fornecedor,
                 'expiration_date' => $expiration_date,
                 'quantity' => $quantity,
                 'last_activity_by' => $last_activity_by
@@ -164,6 +175,10 @@ class Stock extends Controller
         $stock->name = $this->selectItemName($data->item->item_id)->name;
         $stock->quantity = $data->item->quantity;
         $stock->expiration_date = $data->item->expiration_date;
+        $stock->price = $data->item->price;
+        $stock->batch = $data->item->batch;
+        $stock->manufacturer = $data->item->manufacturer;
+        $stock->provider = $data->item->provider;
         $stock->last_activity_by = $data->item->last_activity_by;
 
         $stock->save();

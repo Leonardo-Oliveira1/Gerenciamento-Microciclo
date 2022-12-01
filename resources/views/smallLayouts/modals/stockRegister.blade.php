@@ -48,7 +48,7 @@
                         </div>
                         <div class="col mb-4" style="margin-top: 5px;">
                             <label class="form-label">preço <span style="color: red;"></span></label>
-                            <input type="text" class="form-control" data-affixes-stay="true" data-prefix="R$ " data-thousands="," data-decimal="." id="preco" value="R$ 0.00" required><br>
+                            <input type="text" class="form-control" data-affixes-stay="true" data-prefix="R$ " name="preco" id="preco" value="R$ 0.00" required><br>
 		                    <script type="text/javascript">$("#preco").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});</script>
                         </div>
                     </div>
