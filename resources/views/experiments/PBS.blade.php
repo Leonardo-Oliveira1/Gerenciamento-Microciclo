@@ -17,7 +17,7 @@
 
         <div class="row">
             @if($PBS)
-                <h3 class="p-4" style="margin-top: -30px;">É possível produzir <b><span style="color: #30907B">{{ $PBS }} amostras</span></b> com os recursos disponíveis.</h3>
+                <h3 class="p-4" style="margin-top: -30px;">É possível produzir <b><span style="color: #30907B">{{ $PBS }} litros</span></b> com os recursos disponíveis.</h3>
                 @else
                 <h4 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h4>
             @endif

@@ -21,8 +21,8 @@
                 @else
                 <h4 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h4>
             @endif
-            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Hexano</span></b> em estoque: {{ $hexanos }} litros</h4>
-            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Filtros</span></b> em estoque: {{ $filtros }} unidades</h4>
+            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Hexano</span></b> em estoque: <b>{{ $hexanos }} litros</b>. <span style="font-size: 17px;">({{ round(($hexanos / 0.1), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
+            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Filtros</span></b> em estoque: <b>{{ $filtros }} unidades</b>. <span style="font-size: 17px;">({{ round(($filtros / 2), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
         </div>
     </center>
 </div>
