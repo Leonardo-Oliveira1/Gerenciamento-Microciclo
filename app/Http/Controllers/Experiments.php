@@ -254,14 +254,14 @@ class Experiments extends Controller
         $min_NaCl = $NaCl >= 0.008;
         $min_KCl = $KCl >= 0.0002;
         $min_Na2HPO4 = $Na2HPO4 >= 0.0014;
-        $min_KH2PO4 = $KH2PO4 >= 0.002;
+        $min_KH2PO4 = $KH2PO4 >= 0.0002;
 
         if ($min_NaCl && $min_KCl && $min_Na2HPO4 && $min_KH2PO4) {
 
-            $possible_experiments_with_NaCl = $min_NaCl / 0.008;
-            $possible_experiments_with_KCl = $min_KCl / 0.0002;
-            $possible_experiments_with_Na2HPO4 = $min_Na2HPO4 / 0.0014;
-            $possible_experiments_with_KH2PO4 = $KH2PO4 / 0.002;
+            $possible_experiments_with_NaCl = $NaCl / 0.008;
+            $possible_experiments_with_KCl = $KCl / 0.0002;
+            $possible_experiments_with_Na2HPO4 = $Na2HPO4 / 0.0014;
+            $possible_experiments_with_KH2PO4 = $KH2PO4 / 0.0002;
 
             $max_experiments = round(min($possible_experiments_with_NaCl, $possible_experiments_with_KCl, $possible_experiments_with_Na2HPO4, $possible_experiments_with_KH2PO4), 0, PHP_ROUND_HALF_DOWN);
 
