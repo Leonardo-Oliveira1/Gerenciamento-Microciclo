@@ -19,8 +19,11 @@
             @if($IRAP)
                 <h3 class="p-4" style="margin-top: -30px;">É possível produzir <b><span style="color: #30907B">{{ $IRAP }} litros</span></b> com os recursos disponíveis.</h3>
                 @else
-                <h4 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h4>
+                <h3 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h3>
             @endif
+
+            <h3 class="p-4" style="margin-top: -40px;">O custo unitário deste experimento é <b><span style="color: #30907B">R$ ...</span></b></h3>
+
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Sacarose</span></b> em estoque: <b>{{ $Sacarose }}kg</b>. <span style="font-size: 17px;">({{ round(($Sacarose / 0.05), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Uréia</span></b> em estoque: <b>{{ $Ureia }}kg</b>. <span style="font-size: 17px;">({{ round(($Ureia / 0.002), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Extrato de levedura</span></b> em estoque: <b>{{ $Extrato_de_levedura }}kg</b>. <span style="font-size: 17px;">({{ round(($Extrato_de_levedura / 0.005), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>

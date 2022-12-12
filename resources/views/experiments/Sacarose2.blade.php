@@ -19,7 +19,7 @@
             @if($Sacarose2)
                 <h3 class="p-4" style="margin-top: -30px;">É possível produzir <b><span style="color: #30907B">{{ $Sacarose2 }} litros</span></b> com os recursos disponíveis.</h3>
                 @else
-                <h4 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h4>
+                <h3 class="p-4" style="margin-top: -30px;">Não há recursos suficientes para realizar este experimento.</h3>
             @endif
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">Sacarose</span></b> em estoque: <b>{{ $Sacarose }}kg</b>.</h4>
         </div>

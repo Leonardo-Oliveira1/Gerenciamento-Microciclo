@@ -24,13 +24,13 @@
 
     <div class="row">
         <div class="table-responsive">
-        @include('flash-message')
+            @include('flash-message')
 
             <!--Table-->
             <table class="table">
                 <thead>
                     <tr>
-                    @if ( Auth::user()->account_type == "Administrador(a)")
+                        @if ( Auth::user()->account_type == "Administrador(a)")
                         <th>Ações</th>
                         @endif
                         <th>Nome</th>
@@ -39,7 +39,7 @@
                         <th>Lote</th>
                         <th>Fabricante</th>
                         <th>Fornecedor</th>
-                        <th>Preço</th>
+                        <th>Preço unitário</th>
                         <th>Data de adição</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
                 <tbody>
                     @foreach($items as $item)
                     <tr>
-                    @if ( Auth::user()->account_type == "Administrador(a)")
+                        @if ( Auth::user()->account_type == "Administrador(a)")
                     <tr>
                         <td>
                             <div class="dropdown">
@@ -57,36 +57,36 @@
                                 </div>
                             </div>
                         </td>
-                    @endif
+                        @endif
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{ $item->name }}</td>
                         <td style="font-size: 18px"><span class="badge bg-label-dark me-1">{{ $item->quantity }}</span></td>
                         @if ($item->expiration_date >= date("Y-m-d"))
                         <td style="font-size: 20px;"><span class="badge bg-label-dark me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
-                            @else
-                            <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
+                        @else
+                        <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($item->expiration_date)) }}</span></td>
                         @endif
 
                         @if ($item->batch != null)
                         <td style="font-size: 16px">{{$item->batch}}</td>
-                            @else
+                        @else
                         <td style="font-size: 16px">N/D</td>
                         @endif
 
                         @if ($item->manufacturer != null)
                         <td style="font-size: 16px">{{$item->manufacturer}}</td>
-                            @else
+                        @else
                         <td style="font-size: 16px">N/D</td>
                         @endif
 
                         @if ($item->provider != null)
                         <td style="font-size: 16px">{{$item->provider}}</td>
-                            @else
+                        @else
                         <td style="font-size: 16px">N/D</td>
                         @endif
 
                         @if ($item->price != null)
-                        <td style="font-size: 16px">R$ {{$item->price}}</td>
-                            @else
+                        <td style="font-size: 16px">R$ {{number_format($item->price, 2, ',', ',')}}</td>
+                        @else
                         <td style="font-size: 16px">N/D</td>
                         @endif
 
@@ -99,4 +99,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('endBody')
+<script src="{{ asset('js/numberToCoin.js') }}"></script>
 @endsection

@@ -175,7 +175,7 @@ class Stock extends Controller
         $stock->name = $this->selectItemName($data->item->item_id)->name;
         $stock->quantity = $data->item->quantity;
         $stock->expiration_date = $data->item->expiration_date;
-        $stock->price = $data->item->price;
+        $stock->price = ($data->item->price / $data->item->quantity);
         $stock->batch = $data->item->batch;
         $stock->manufacturer = $data->item->manufacturer;
         $stock->provider = $data->item->provider;
