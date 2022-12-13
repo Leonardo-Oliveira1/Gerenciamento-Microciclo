@@ -78,9 +78,13 @@
                         <td style="font-size: 16px"><span>{{ $stock['volume'] }}{{ $stock['measure'] }}</span></td>
                         @endif
                         @if ($stock['next_expiration_date'] >= date("Y-m-d"))
-                        <td style="font-size: 20px;"><span class="badge bg-label-dark me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
+                            @if($stock['next_expiration_date'] == "9999-01-01")
+                                <td style="font-size: 20px;"><span class="badge bg-label-dark me-1">imperecível</span></td>
+                                @else
+                                <td style="font-size: 22px;"><span class="badge bg-label-dark me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
+                            @endif
                         @else
-                        <td style="font-size: 20px;"><span class="badge bg-label-danger me-1">{{ date('d/m/Y', strtotime($stock['next_expiration_date'])) }}</span></td>
+                        <td style="font-size: 18px;"><span class="badge bg-label-danger me-1">Todos vencidos</span></td>
                         @endif
                         <td>{{ date('d/m/Y', strtotime($stock['updated_at'])) }}</td>
                     </tr>
