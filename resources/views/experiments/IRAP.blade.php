@@ -32,7 +32,7 @@
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">MgSO4.7H2O</span></b> em estoque: <b>{{ $MgSO47H2O }}kg</b>. <span style="font-size: 17px;">({{ round(($MgSO47H2O / 0.001), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">FeSO4.7H2O</span></b> em estoque: <b>{{ $FeSO47H2O }}kg</b>. <span style="font-size: 17px;">({{ round(($FeSO47H2O / 0.0001), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             <h4 style="padding-left: 24px;"><b><span style="color: #30907B">CuSO4.5H2O</span></b> em estoque: <b>{{ $CuSO45H2O }}kg</b>. <span style="font-size: 17px;">({{ round(($CuSO45H2O / 0.0000088), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
-            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">MnSO4.H2O</span></b> em estoque: <b>{{ $MnSO4H2O }}kg</b>. <span style="font-size: 17px;">({{ round(($MnSO4H2O / 0.0000076), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
+            <h4 style="padding-left: 24px;"><b><span style="color: #30907B">MnSO4.H2O</span></b> em estoque: <b>{{ $MnSO4H2O * 1000 }}g</b>. <span style="font-size: 17px;">({{ round(($MnSO4H2O / 0.0000076), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             @if(0.1 > $ZnSO47H2O)
                 <h4 style="padding-left: 24px;"><b><span style="color: #30907B">ZnSO4.7H2O</span></b> em estoque: <b>{{ $ZnSO47H2O * 1000 }}g</b>. <span style="font-size: 17px;">({{ round(($ZnSO47H2O / 0.00001), 0, PHP_ROUND_HALF_DOWN) }} experimentos)</span></h4>
             @else

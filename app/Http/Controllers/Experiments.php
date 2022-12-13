@@ -30,7 +30,7 @@ class Experiments extends Controller
             'MgSO47H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")->volume_measure, $this->getItemInfo("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")->volume, $this->getItemQuantity("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)")),
             'FeSO47H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Ferro II (OSO - FeSO4.7H2O)")->volume_measure, $this->getItemInfo("Sulfato de Ferro II (OSO - FeSO4.7H2O)")->volume, $this->getItemQuantity("Sulfato de Ferro II (OSO - FeSO4.7H2O)")),
             'CuSO45H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Cobre II (ICO - CuSO4.5H2O)")->volume_measure, $this->getItemInfo("Sulfato de Cobre II (ICO - CuSO4.5H2O)")->volume, $this->getItemQuantity("Sulfato de Cobre II (ICO - CuSO4.5H2O)")),
-            'MnSO4H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Manganês II (OSO - MnSO4.H2O)")->volume_measure, $this->getItemInfo("Sulfato de Manganês II (OSO - MnSO4.H2O)")->volume, $this->getItemQuantity("Sulfato de Manganês II (OSO - MnSO4.H2O)")),
+            'MnSO4H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Manganês")->volume_measure, $this->getItemInfo("Sulfato de Manganês")->volume, $this->getItemQuantity("Sulfato de Manganês")),
             'ZnSO47H2O' => $this->measurementConverter($this->getItemInfo("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)")->volume_measure, $this->getItemInfo("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)")->volume, $this->getItemQuantity("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)")),
         ]);
     }
@@ -130,7 +130,7 @@ class Experiments extends Controller
         $MgSO47H2O = $this->getItem("Sulfato de Magnésio Heptahidratado (MgSO4.7H2O)");
         $FeSO47H2O = $this->getItem("Sulfato de Ferro II (OSO - FeSO4.7H2O)");
         $CuSO45H2O = $this->getItem("Sulfato de Cobre II (ICO - CuSO4.5H2O)");
-        $MnSO4H2O = $this->getItem("Sulfato de Manganês II (OSO - MnSO4.H2O)");
+        $MnSO4H2O = $this->getItem("Sulfato de Manganês");
         $ZnSO47H2O = $this->getItem("Sulfato de Zinco Heptahidratado (ZnSO4.7H2O)");
 
         $min_sacarose = $Sacarose >= 0.05;
